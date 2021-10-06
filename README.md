@@ -1,6 +1,6 @@
 # FREEJOUSTERS
 
-<b> Where Sportive Freelancers and tournaments find each other </b>
+<b> Because finding your next freelancing project doesn't have to feel like a war </b>
 
 Brought to you with the use of:
 
