@@ -12,7 +12,7 @@ Brought to you with the use of:
 
 * Large amounts of gummy bears
 
-Stay tunned for more info about this project in the following days!
+Stay tuned for more info about this project in the following days!
 
 <!--README
 
