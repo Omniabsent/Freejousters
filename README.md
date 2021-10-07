@@ -4,7 +4,10 @@
 
 Brought to you with the use of:
 
-* Ruby 3.0.2p107
+* Ruby 3.0.2p107, featuring the following gems:
+  - capybara
+  - rspec
+  - devise
 
 * Rails 6.1.4.1
 
