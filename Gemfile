@@ -34,6 +34,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'devise'
+  gem 'rexml'
 end
 
 group :development do
