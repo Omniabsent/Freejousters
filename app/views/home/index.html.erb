@@ -22,25 +22,19 @@ div {
 }
 </style>
 
-
 <h1> Bem vindo ao Freejouster! </h1>
-<div id=rightbox>
-<h3>Freejousting: sportive freelancing</h3>
-<p>Tradicionalmente, o termo "freelance" se refere a uma unidade de infantaria [um lancer] preenchida por um mercenário [um homem de armas não juramentado a um lorde, ou seja, "free"].</p>
-<p>Fora da atividade militar, era comum que cavaleiros participassem de competições conhecidas como hastiludes, que incluíam diversos combates esportivos, em especial as justas.</p>
-<p>A sociedade evoluiu e o freelancing também, sendo praticado por todas as classes da sociedade e em todos os tipos de lugares:</p>
-<img src='https://c.tenor.com/DiUJhQcgALsAAAAC/airport-jousting.gif' alt='depiction of modern freelancing'>
-</div>
-
-<div id=leftbox>
-<h3>Bem vindo, caro freelancer, ao site que conecta você às melhores oportunidades em sua área profissional!</h3>
-
 
 <%if user_signed_in? then %>
   <%if current_user.role == 'hirer' then%>
-    <%=link_to 'Criar novo projeto', '#' %>
+    <h3>Bem vindo, <%=current_user.email %><%#TODO: criar campo de nome na tabela de user%>! </h3>
+    <p><%=link_to 'Meus projetos', '#' %></p>
+    <p><%=link_to 'Criar novo projeto', '#' %></p>
+    <p><%=link_to 'Meus profissionais favoritos', '#' %></p>
   <%elsif current_user.role == 'hireable' %>
-    <%=link_to 'Criar perfil profissional', '#' %>
+    <h3>Bem vindo, <%=current_user.email %><%#TODO: criar campo de nome na tabela de user%>! </h3>
+    <p><%=link_to 'Meus projetos', '#' %></p>
+    <p><%=link_to 'Procurar novos projetos', '#' %></p>
+    <p><%=link_to 'Criar perfil profissional', '#' %><p>
   <%else%>
     <h2>Selecione a função desejada:</h2>
     <%=button_to 'Tenho um projeto e procuro alguém para criá-lo', hirer_path %>
@@ -48,6 +42,18 @@ div {
     <%=button_to 'Tenho uma skill e procuro um projeto onde usá-la', hireable_path %>
   <%end%>
 <%else%>
+  <div id=rightbox>
+  <h3>Freejousting: sportive freelancing</h3>
+  <p>Tradicionalmente, o termo "freelance" se refere a uma unidade de infantaria [um lancer] preenchida por um mercenário [um homem de armas não juramentado a um lorde, ou seja, "free"].</p>
+  <p>Fora da atividade militar, era comum que cavaleiros participassem de competições conhecidas como hastiludes, que incluíam diversos combates esportivos, em especial as justas.</p>
+  <p>A sociedade evoluiu e o freelancing também, sendo praticado por todas as classes da sociedade e em todos os tipos de lugares:</p>
+  <img src='https://c.tenor.com/DiUJhQcgALsAAAAC/airport-jousting.gif' alt='depiction of modern freelancing'>
+  </div>
+
+  <div id=leftbox>
+  <h3>Bem vindo, caro freelancer, ao site que coloca você de frente com as melhores oportunidades em sua área profissional!</h3>
+
+
   <%= button_to 'Acessar conta', user_session_path %>
   <%= button_to 'Criar conta', new_user_session_path %>
   <% #TODO: colocar o form de login embedded aqui [quando descobrir como fazer isso] %>
