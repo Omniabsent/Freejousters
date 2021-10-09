@@ -10,6 +10,7 @@ class HomeController < ApplicationController
     @user.role = 'hirer'
     if @user.save then
         redirect_to root_path
+        flash[:notice] = 'Usuário configurado como contratante'
     end
   end
 
@@ -18,6 +19,7 @@ class HomeController < ApplicationController
     @user.role = 'hireable'
     if @user.save then
         redirect_to root_path
+        flash[:notice] = 'Usuário configurado como profissional'
     end
   end
 
