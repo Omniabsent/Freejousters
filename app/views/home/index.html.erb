@@ -32,9 +32,20 @@ div {
 <div id=leftbox>
 <h3>Bem vindo, caro freelancer, ao site que conecta você às melhores oportunidades em sua área profissional!</h3>
 
-<h2>Selecione a função desejada:</h2>
 
-<%=link_to 'Tenho um projeto e procuro alguém para criá-lo', '#' %>
-<br>
-<%=link_to 'Tenho uma skill e procuro um projeto onde usá-la', '#' %>
+<%if user_signed_in? then %>
+  <%if current_user.role == 'hirer' then%>
+    Usuário configurado como contratante
+    <%=link_to 'Criar novo projeto', '#' %>
+  <%elsif current_user.role == 'hireable' %>
+    Usuário configurado como profissional
+    <%=link_to 'Criar perfil profissional', '#' %>
+  <%else%>
+    <h2>Selecione a função desejada:</h2>
+    <%=button_to 'Tenho um projeto e procuro alguém para criá-lo', hirer_path %>
+    <br>
+    <%=button_to 'Tenho uma skill e procuro um projeto onde usá-la', hireable_path %>
+  <%end%>
+<%end%>
+
 </div>
