@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'home#index'
   get '/about', to: 'home#about'
-  post '/hirer', to: 'home#hirer'
-  post '/hireable', to: 'home#hireable'
+  post '/hirer', to: 'user#hirer'
+  post '/hireable', to: 'user#hireable'
 
 end
