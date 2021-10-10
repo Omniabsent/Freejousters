@@ -34,7 +34,7 @@ div {
     <h3>Bem vindo, <%=current_user.email %><%#TODO: criar campo de nome na tabela de user%>! </h3>
     <p><%=link_to 'Meus projetos', '#' %></p>
     <p><%=link_to 'Procurar novos projetos', '#' %></p>
-    <p><%=link_to 'Criar perfil profissional', '#' %><p>
+    <p><%=link_to 'Atualizar perfil profissional', user_profile_profile_path %><p>
   <%else%>
     <h2>Selecione a função desejada:</h2>
     <%=button_to 'Tenho um projeto e procuro alguém para criá-lo', hirer_path %>

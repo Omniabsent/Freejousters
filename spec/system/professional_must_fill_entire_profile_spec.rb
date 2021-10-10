@@ -7,6 +7,6 @@ describe 'professional logs in' do
     login_as user
     visit root_path
 
-    expect(page).to have_link('Criar perfil profissional')
+    expect(page).to have_link('Atualizar perfil profissional')
   end
 end

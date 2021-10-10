@@ -3,8 +3,8 @@ class UserController < ApplicationController
     @user = current_user
     @user.role = 'hirer'
     if @user.save then
-        redirect_to root_path
-        flash[:notice] = 'Usuário configurado como contratante'
+      redirect_to root_path
+      flash[:notice] = 'Usuário configurado como contratante'
     end
   end
 
@@ -12,8 +12,8 @@ class UserController < ApplicationController
     @user = current_user
     @user.role = 'hireable'
     if @user.save then
-        redirect_to root_path
-        flash[:notice] = 'Usuário configurado como profissional'
+      redirect_to root_path
+      flash[:notice] = 'Usuário configurado como profissional'
     end
   end
 end
