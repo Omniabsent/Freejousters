@@ -1,12 +1,7 @@
 <h1>Perfil profissional</h1>
 
-<% if @user_profile.errors.any? then %>
-  <% @user_profile.errors.full_messages.each do |error| %>
-    <%= error %></br>
-  <% end %>
-<% end %>
 
-<%= form_with model: UserProfile.new do |f| %>
+<%= form_for @user_profile do |f| %>
   <div>
     <%= f.label :name, 'Nome' %>
     <%= f.text_field :name %>
@@ -35,6 +30,6 @@
     <%= f.label :picture, 'Foto [link]' %>
     <%= f.text_field :picture %>
   </div>
-  <%= f.submit 'Enviar' %>
+  <%= f.submit 'Editar' %>
 
 <%end%>

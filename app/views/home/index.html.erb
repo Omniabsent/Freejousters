@@ -26,15 +26,20 @@ div {
 
 <%if user_signed_in? then %>
   <%if current_user.role == 'hirer' then%>
-    <h3>Bem vindo, <%=current_user.email %><%#TODO: criar campo de nome na tabela de user%>! </h3>
+    <h3>Bem vindo, você está logado como: <%=current_user.email %><%#TODO: criar campo de nome na tabela de user%>! </h3>
     <p><%=link_to 'Meus projetos', '#' %></p>
     <p><%=link_to 'Criar novo projeto', '#' %></p>
     <p><%=link_to 'Meus profissionais favoritos', '#' %></p>
   <%elsif current_user.role == 'hireable' %>
-    <h3>Bem vindo, <%=current_user.email %><%#TODO: criar campo de nome na tabela de user%>! </h3>
-    <p><%=link_to 'Meus projetos', '#' %></p>
-    <p><%=link_to 'Procurar novos projetos', '#' %></p>
-    <p><%=link_to 'Atualizar perfil profissional', new_user_profile_path %><p>
+    <h3>Bem vindo, você está logado como: <%=current_user.email %> </h3>
+    <% if current_user.user_profile.nil? then  %>
+      <p><%=link_to 'Criar perfil profissional', new_user_profile_path %>
+      <h5>Opções de uso do sistema serão liberadas apenas após a criação do perfil no link acima</h5>
+    <%else%>
+      <p><%=link_to 'Meus projetos', '#' %></p>
+      <p><%=link_to 'Procurar novos projetos', '#' %></p>
+      <p><%=link_to 'Modificar meu perfil', '#' %></p>
+    <%end%>
   <%else%>
     <h2>Selecione a função desejada:</h2>
     <%=button_to 'Tenho um projeto e procuro alguém para criá-lo', hirer_path %>
