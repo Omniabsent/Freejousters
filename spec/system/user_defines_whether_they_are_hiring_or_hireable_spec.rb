@@ -37,6 +37,6 @@ describe 'After loging in, the user' do
     login_as user, scope: :user
     visit root_path
 
-    expect(page).to have_link('Atualizar perfil profissional')
+    expect(page).to have_link('Criar perfil profissional')
   end
 end
