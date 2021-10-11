@@ -1,11 +1,12 @@
 class UserProfilesController < ApplicationController
   def new
+    @user_profile = UserProfile.new
   end
 
   def create
-    @profile = UserProfile.new(params.require(:user_profile).permit(:name, :social_name, :birth_date, :major, :bio, :experience, :picture))
-    @profile.user_id = current_user
-    if @profile.save then
+    @user_profile = UserProfile.new(params.require(:user_profile).permit(:name, :social_name, :birth_date, :major, :bio, :experience, :picture))
+    @user_profile.user = current_user
+    if @user_profile.save! then
       redirect_to root_path
     else
       render :new

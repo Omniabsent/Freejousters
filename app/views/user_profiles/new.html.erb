@@ -1,7 +1,7 @@
 <h1>Perfil profissional</h1>
 
 
-<%= form_for UserProfile.new do |f| %>
+<%= form_with model: UserProfile.new do |f| %>
   <div>
     <%= f.label :name, 'Nome' %>
     <%= f.text_field :name %>
@@ -31,4 +31,5 @@
     <%= f.text_field :picture %>
   </div>
   <%= f.submit 'Enviar' %>
+
 <%end%>

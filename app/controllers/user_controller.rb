@@ -16,4 +16,8 @@ class UserController < ApplicationController
       flash[:notice] = 'Usuário configurado como profissional'
     end
   end
+
+  def show
+    @user = current_user
+  end
 end
