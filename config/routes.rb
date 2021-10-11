@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about'
   post '/hirer', to: 'user#hirer'
   post '/hireable', to: 'user#hireable'
-  get '/user_profile/profile', to: 'user_profile#profile'
-  post '/user_profile/profile', to: 'user_profile#new'
+  resources :user_profiles
+  #get '/user_profile/profile', to: 'user_profile#profile'
+  #post '/user_profile/profile', to: 'user_profile#new'
 end
