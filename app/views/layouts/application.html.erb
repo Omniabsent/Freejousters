@@ -1,4 +1,34 @@
 <!DOCTYPE html>
+
+<style>
+nav {
+  background-color:#a34595;
+  text-align:center
+}
+
+h1 {
+  background-color:purple;
+  text-align:center
+}
+
+body{
+  background-color:#1d1d21;
+  color: white
+}
+div {
+  margin: 10px;
+}
+
+#leftbox{
+  float:left;
+  width: 30%;
+}
+#rightbox{
+  float:right;
+  width: 65%;
+}
+</style>
+
 <html>
   <head>
     <title>Freejousters</title>
@@ -13,7 +43,8 @@
   <body>
     <nav>
       <% if user_signed_in? %>
-        <p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
+        <%= link_to 'Home', root_path %> |
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       <% else %>
         <p><%= link_to 'Entrar', new_user_session_path %></p>
       <% end %>
