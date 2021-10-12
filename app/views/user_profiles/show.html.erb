@@ -1,0 +1,12 @@
+<h1>Meus dados</h1>
+
+<%= current_user.email %><br>
+<%= current_user.role %><br>
+<%= current_user.user_profile.name %><br>
+<%= current_user.user_profile.social_name %><br>
+<%= current_user.user_profile.bio%><br>
+<%= current_user.user_profile.major%><br>
+<%= current_user.user_profile.experience%><br>
+<%= current_user.user_profile.birth_date%><br>
+<img src="<%= current_user.user_profile.picture%>"><br>
+<p><%=link_to 'Modificar meu perfil', edit_user_profile_path(current_user.user_profile) %></p>

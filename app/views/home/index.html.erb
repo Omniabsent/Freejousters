@@ -36,9 +36,9 @@ div {
       <p><%=link_to 'Criar perfil profissional', new_user_profile_path %>
       <h5>Opções de uso do sistema serão liberadas apenas após a criação do perfil no link acima</h5>
     <%else%>
+      <p><%=link_to 'Meu perfil', user_profile_path(current_user.user_profile) %></p>
       <p><%=link_to 'Meus projetos', '#' %></p>
       <p><%=link_to 'Procurar novos projetos', '#' %></p>
-      <p><%=link_to 'Modificar meu perfil', '#' %></p>
     <%end%>
   <%else%>
     <h2>Selecione a função desejada:</h2>
@@ -60,7 +60,7 @@ div {
 
 
   <%= button_to 'Acessar conta', user_session_path %>
-  <%= button_to 'Criar conta', new_user_session_path %>
+  <%= button_to 'Criar conta', user_registration_path %>
   <% #TODO: colocar o form de login embedded aqui [quando descobrir como fazer isso] %>
 <%end%>
 
