@@ -27,9 +27,10 @@ div {
 <%if user_signed_in? then %>
   <%if current_user.role == 'hirer' then%>
     <h3>Bem vindo, você está logado como: <%=current_user.email %><%#TODO: criar campo de nome na tabela de user%>! </h3>
-    <p><%=link_to 'Meus projetos', '#' %></p>
-    <p><%=link_to 'Criar novo projeto', '#' %></p>
+    <p><%=link_to 'Meus projetos', my_projects_path %></p>
+    <p><%=link_to 'Criar novo projeto', new_project_path %></p>
     <p><%=link_to 'Meus profissionais favoritos', '#' %></p>
+    <p><%=link_to 'Projetos existentes no sistema', all_projects_path %></p>
   <%elsif current_user.role == 'hireable' %>
     <h3>Bem vindo, você está logado como: <%=current_user.email %> </h3>
     <% if current_user.user_profile.nil? then  %>
@@ -37,8 +38,8 @@ div {
       <h5>Opções de uso do sistema serão liberadas apenas após a criação do perfil no link acima</h5>
     <%else%>
       <p><%=link_to 'Meu perfil', user_profile_path(current_user.user_profile) %></p>
-      <p><%=link_to 'Meus projetos', '#' %></p>
-      <p><%=link_to 'Procurar novos projetos', '#' %></p>
+      <p><%=link_to 'Projetos que estou participando', '#' %></p>
+      <p><%=link_to 'Projetos existentes no sistema', all_projects_path %></p>
     <%end%>
   <%else%>
     <h2>Selecione a função desejada:</h2>

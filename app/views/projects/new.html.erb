@@ -1,0 +1,35 @@
+<h1>Novo projeto</h1>
+
+<% if @project.errors.any? then %>
+  <% @project.errors.full_messages.each do |error| %>
+    <%= error %></br>
+  <% end %>
+<% end %>
+
+<%= form_with model: Project.new do |f| %>
+  <div>
+    <%= f.label :title, 'Nome do projeto' %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_field :description  %>
+  </div>
+  <div>
+    <%= f.label :wanted_skills, 'Skills necessárias' %>
+    <%= f.text_field :wanted_skills %>
+  </div>
+  <div>
+    <%= f.label :max_pay, 'Valor máximo oferecido [hora]' %>
+    <%= f.number_field :max_pay %>
+  </div>
+  <div>
+    <%= f.label :expiration_date, 'Data limite para início' %>
+    <%= f.date_field :expiration_date %>
+  </div>
+  <div>
+    <%= f.label :remote, 'Exclusivamente remoto?' %>
+    <%= f.check_box :remote %>
+  </div>
+  <%= f.submit 'Enviar' %>
+<%end%>

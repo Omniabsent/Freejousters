@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   post '/hireable', to: 'user#hireable'
   resources :user_profiles
   resources :users
+  resources :projects
+  get '/my_projects', to: 'projects#my_projects'
+  get '/all_projects', to: 'projects#all_projects'  
   #get '/user_profile/profile', to: 'user_profile#profile'
   #post '/user_profile/profile', to: 'user_profile#new'
 end

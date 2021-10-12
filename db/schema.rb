@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_084555) do
+ActiveRecord::Schema.define(version: 2021_10_12_073734) do
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "wanted_skills"
+    t.integer "max_pay"
+    t.date "expiration_date"
+    t.boolean "remote"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
 
   create_table "user_profiles", force: :cascade do |t|
     t.string "name"
@@ -39,5 +52,6 @@ ActiveRecord::Schema.define(version: 2021_10_10_084555) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "projects", "users"
   add_foreign_key "user_profiles", "users"
 end
