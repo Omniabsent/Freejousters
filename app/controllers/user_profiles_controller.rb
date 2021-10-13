@@ -23,4 +23,9 @@ class UserProfilesController < ApplicationController
     redirect_to user_profile_path
   end
 
+  def show
+    id = params[:id]
+    @user_profile = UserProfile.find(id)
+  end
+
 end

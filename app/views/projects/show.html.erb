@@ -1,2 +1,11 @@
-
-Aqui vai aparecer info do projeto selecionado etc
+<h1><% p = @project %></h1>
+<h1><%= p.title %></h1>
+<p>Descrição: <%= p.description %></p>
+<p>Habilidades desejadas: <%= p.wanted_skills%></p>
+<p>Pagamento por hora: <%= p.max_pay%></p>
+<p>Data limite para início do projeto: <%= p.expiration_date %></p>
+<% if p.remote then %>
+<p>Trabalho remoto</p>
+<%else%>
+<p>Trabalho presencial</p>
+<%end%>

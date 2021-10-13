@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(params.require(:project).permit(:title, :description, :wanted_skills, :max_pay, :expiration_date, :remote))
+    @project = Project.new(params.require(:project).permit(:title, :description, :wanted_skills, :max_pay, :expiration_date))
     @project.user = current_user
     if @project.save then
       redirect_to root_path
@@ -19,8 +19,13 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    @project = Project.update(params.require(:project).permit(:title, :description, :wanted_skills, :max_pay, :expiration_date, :remote))
+    @project = Project.update(params.require(:project).permit(:title, :description, :wanted_skills, :max_pay, :expiration_date))
     redirect_to user_profile_path
+  end
+
+  def show
+    id = params[:id]
+    @project = Project.find(id)
   end
 
   def my_projects

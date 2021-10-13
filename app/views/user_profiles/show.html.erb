@@ -1,12 +1,22 @@
-<h1>Meus dados</h1>
+<% u = @user_profile %>
+<h1><%=u.social_name%></h1>
 
-<%= current_user.email %><br>
-<%= current_user.role %><br>
-<%= current_user.user_profile.name %><br>
-<%= current_user.user_profile.social_name %><br>
-<%= current_user.user_profile.bio%><br>
-<%= current_user.user_profile.major%><br>
-<%= current_user.user_profile.experience%><br>
-<%= current_user.user_profile.birth_date%><br>
-<img src="<%= current_user.user_profile.picture%>"><br>
-<p><%=link_to 'Modificar meu perfil', edit_user_profile_path(current_user.user_profile) %></p>
+<div id=leftbox>
+  Nome: <%= u.social_name %><br>
+  Nome conforme documentos: <%= u.name %><br>
+  Descrição: <%= u.bio%><br>
+  Formação: <%= u.major%><br>
+  Expriência: <%= u.experience%><br>
+  Nascimento: <%= u.birth_date%><br>
+
+  <% if current_user.id == @user_profile.id then %>
+    <p><%=link_to 'Modificar meu perfil', edit_user_profile_path(current_user.user_profile) %></p>
+  <%# elsif current_user.role == 'hirer' then %>
+    <%#= f.label :favourite, 'Profissional favorito' %>
+    <%#= f.check_box :favourite %>
+    <!-- coisas de favorito ainda sem tabela, fazer depois que tiver perfil pra hirer também -->
+  <%end%>
+</div>
+<div id=rightbox>
+  <img src="<%= u.picture%>"><br>
+</div>
