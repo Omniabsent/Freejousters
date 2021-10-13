@@ -27,7 +27,7 @@ describe 'professional logs in' do
     click_on 'Enviar'
 
     expect(page).not_to have_link('Criar perfil profissional')
-    expect(page).to have_link('Procurar novos projetos')
+    expect(page).to have_link('Projetos disponíveis')
   end
 
   it 'and edits profile' do
