@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :users
   resources :projects
   get '/my_projects', to: 'projects#my_projects'
-  get '/all_projects', to: 'projects#all_projects'  
+  get '/all_projects', to: 'projects#all_projects'
   #get '/user_profile/profile', to: 'user_profile#profile'
   #post '/user_profile/profile', to: 'user_profile#new'
+  get 'search', to: "projects#search"
 end

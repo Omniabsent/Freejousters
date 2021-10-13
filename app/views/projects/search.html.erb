@@ -1,0 +1,6 @@
+<h1>Resultados da busca</h1>
+<ul>
+  <% @project.each do |p| %>
+    <li><%= link_to p.title, project_path(p.id) %>: <%= p.description %></li>
+  <% end %>
+</ul>

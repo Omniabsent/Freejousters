@@ -2,6 +2,14 @@ Essa página deve listar apenas projetos não-expirados
 <br>
 Deve ser visível pra ambos roles<br>
 
+
+<%= form_with url: search_path, method: :get do %>
+  <%= label_tag :q, 'Busca:' %>
+  <%= text_field_tag :q %>
+  <%= submit_tag 'Pesquisar' %>
+<% end %>
+
+
 <% @project.each do |p| %>
   <% if p.expiration_date > DateTime.now then %>
     <div>

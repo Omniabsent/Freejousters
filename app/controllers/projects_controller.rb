@@ -35,4 +35,8 @@ class ProjectsController < ApplicationController
   def all_projects
     @project = Project.all
   end
+
+  def search
+    @project = Project.where('title like ? OR description like ?', "%#{params[:q]}%", "%#{params[:q]}%")
+  end
 end
