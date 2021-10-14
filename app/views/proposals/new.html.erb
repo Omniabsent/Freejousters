@@ -23,6 +23,9 @@
     <%= f.label :total_hours, 'Total de horas estimadas' %>
     <%= f.number_field :total_hours %>
   </div>
-  <%= f.hidden_field :id, value: params['id'] %>
+  <div>
+    <%= f.label :project_id, 'Projeto' %>
+    <%= f.collection_select :project_id, Project.all, :id, :title %> << gambiarra temporária pra eu já poder ir fazendo outras funções enquanto não descubro como passar a id do show pro new
+    </div>
   <%= f.submit 'Enviar' %>
 <%end%>

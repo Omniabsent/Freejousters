@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   #post '/user_profile/profile', to: 'user_profile#new'
   get 'search', to: "projects#search"
   resources :proposals
+  get '/my_proposals', to: 'proposals#my_proposals'
+  get '/proposals_to_my_projects', to: 'proposals#proposals_to_my_projects'
 end

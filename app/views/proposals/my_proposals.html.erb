@@ -1,0 +1,11 @@
+<h1>Minhas propostas</h1>
+<% if @proposal.empty? then %>
+  Você ainda não se candidatou para nenhum projeto
+  <%= link_to 'Candidatar-se', new_proposal_path %>
+<% end %>
+
+<% @proposal.each do |p| %>
+  <div>
+    <h3><%= link_to p.presentation, proposal_path(p.id) %></h3>
+  </div>
+<%end%>

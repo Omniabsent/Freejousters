@@ -10,4 +10,6 @@
 <p>Trabalho presencial</p>
 <%end%>
 
-<%= link_to "Candidatar-se", new_proposal_path(:id => params[:id])%>
+<% if current_user.role == 'hireable' then %>
+  <%= link_to "Candidatar-se", new_proposal_path%>
+<% end %>

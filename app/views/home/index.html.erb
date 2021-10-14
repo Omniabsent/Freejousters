@@ -5,7 +5,7 @@
     <h3>Bem vindo, você está logado como: <%=current_user.email %><%#TODO: criar campo de nome na tabela de user%>! </h3>
     <p><%=link_to 'Meus projetos', my_projects_path %></p>
     <p><%=link_to 'Criar novo projeto', new_project_path %></p>
-    <p><%=link_to 'Projetos disponíveis', all_projects_path %></p>
+    <p><%=link_to 'Propostas de profissionais', proposals_path %></p>
   <%elsif current_user.role == 'hireable' %>
     <h3>Bem vindo, você está logado como: <%=current_user.email %> </h3>
     <% if current_user.user_profile.nil? then  %>
@@ -13,7 +13,7 @@
       <h5>Opções de uso do sistema serão liberadas apenas após a criação do perfil no link acima</h5>
     <%else%>
       <p><%=link_to 'Meu perfil', user_profile_path(current_user.user_profile) %></p>
-      <p><%=link_to 'Projetos que estou participando', '#' %></p>
+      <p><%=link_to 'Projetos que estou participando', my_proposals_path %></p>
       <p><%=link_to 'Projetos disponíveis', all_projects_path %></p>
     <%end%>
   <%else%>

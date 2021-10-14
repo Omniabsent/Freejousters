@@ -1,0 +1,6 @@
+<% @proposal.each do |p| %>
+  <div>
+    <h3><%= link_to p.description, project_path(p.id) %></h3>
+    <p> <%= p.description %></p><br>
+  </div>
+<%end%>
