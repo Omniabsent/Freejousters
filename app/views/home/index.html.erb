@@ -6,7 +6,6 @@
     <p><%=link_to 'Meus projetos', my_projects_path %></p>
     <p><%=link_to 'Criar novo projeto', new_project_path %></p>
     <p><%=link_to 'Projetos disponíveis', all_projects_path %></p>
-    <p><%=link_to 'Meus profissionais favoritos', '#' %></p>
   <%elsif current_user.role == 'hireable' %>
     <h3>Bem vindo, você está logado como: <%=current_user.email %> </h3>
     <% if current_user.user_profile.nil? then  %>
@@ -36,9 +35,8 @@
   <h3>Bem vindo, caro freelancer, ao site que coloca você de frente com as melhores oportunidades em sua área profissional!</h3>
 
 
-  <%= button_to 'Acessar conta', user_session_path %>
-  <%= button_to 'Criar conta', user_registration_path %>
-  <% #TODO: colocar o form de login embedded aqui [quando descobrir como fazer isso] %>
+  <%= link_to 'Acessar conta', new_user_session_path %> </br>
+  <%= link_to 'Criar conta', new_user_registration_path %>
 <%end%>
 
 </div>
