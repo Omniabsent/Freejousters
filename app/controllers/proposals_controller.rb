@@ -8,11 +8,10 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(params.require(:proposal).permit(:presentation, :charges, :week_hours, :total_hours, :project_id, :approval))
     @proposal.approval = 'pending'
     @proposal.user = current_user
-    if @proposal.save then
-      redirect_to root_path
-    else
-      render :new
-    end
+    @proposal.project = Project.find(params[:project_id])
+    @proposal.save!
+
+    redirect_to root_path, notice: 'Você se candidatou a esse projeto'
   end
 
   def show
