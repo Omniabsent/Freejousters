@@ -6,14 +6,13 @@ Rails.application.routes.draw do
   post '/hirer', to: 'user#hirer'
   post '/hireable', to: 'user#hireable'
   resources :user_profiles
-  resources :users
-  resources :projects
+  resources :users, only: [:show]
+  resources :projects, only: [:new, :create, :show] do
+    resources :proposals, only: [:show, :new, :create, :index]
+  end
   get '/my_projects', to: 'projects#my_projects'
   get '/all_projects', to: 'projects#all_projects'
-  #get '/user_profile/profile', to: 'user_profile#profile'
-  #post '/user_profile/profile', to: 'user_profile#new'
   get 'search', to: "projects#search"
-  resources :proposals
   get '/my_proposals', to: 'proposals#my_proposals'
   get '/proposals_to_my_projects', to: 'proposals#proposals_to_my_projects'
 end

@@ -13,3 +13,26 @@
 <% if current_user.role == 'hireable' then %>
   <%= link_to "Candidatar-se", new_proposal_path%>
 <% end %>
+
+
+<h1>Candidate-se a esse projeto:</h1>
+
+<%= form_with model: [@project, @proposal] do |f| %>
+  <div>
+    <%= f.label :presentation, 'Apresentação' %>
+    <%= f.text_field :presentation %>
+  </div>
+  <div>
+    <%= f.label :charges, 'Custo' %>
+    <%= f.number_field :charges  %>
+  </div>
+  <div>
+    <%= f.label :week_hours, 'Horas semanais disponíveis' %>
+    <%= f.number_field :week_hours %>
+  </div>
+  <div>
+    <%= f.label :total_hours, 'Total de horas estimadas' %>
+    <%= f.number_field :total_hours %>
+  </div>
+  <%= f.submit 'Enviar' %>
+<%end%>

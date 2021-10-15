@@ -15,6 +15,11 @@ class ProposalsController < ApplicationController
     end
   end
 
+  def show
+    id = params[:id]
+    @proposal = Proposal.find(id)
+  end
+
   def proposals_to_my_projects
     @proposal = current_user.proposals.projects
   end
