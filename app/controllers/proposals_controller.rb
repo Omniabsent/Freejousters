@@ -11,7 +11,7 @@ class ProposalsController < ApplicationController
     @proposal.project = Project.find(params[:project_id])
     @proposal.save!
 
-    redirect_to root_path, notice: 'Você se candidatou a esse projeto'
+    redirect_to request.referer, notice: 'Você se candidatou a esse projeto'
   end
 
   def show

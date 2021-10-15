@@ -25,11 +25,16 @@ describe 'professional searchs for project' do
     Project.create!(title:'Salvar Nassau', description:'Busco pessoas interessadas em recuperar Nassau do domínio de Woodes Rogers', wanted_skills:'Ser capaz de lutar', max_pay: 50, expiration_date:10.days.from_now, user: user)
     Project.create!(title:'Saquear o Urca de Lima', description:'Procuro piratas qualificados para atacar e roubar o ouro dos espanhóis', wanted_skills:'Saber operar canhão, lutar com pistola e espada, ler mapas', max_pay: 99999, expiration_date:10.days.from_now, user: user)
 
-    login_as user
+    login_as professional
     visit root_path
     click_on 'Projetos disponíveis'
     click_on 'Salvar Nassau'
-    click_on 'Candidatar-se'
-    
+    fill_in 'Apresentação', with: 'Sou um dos piratas mais temidos do novo mundo e considero Nassau meu verdadeiro lar'
+    fill_in 'Custo', with: 100
+    fill_in 'Horas semanais disponíveis', with: 168
+    fill_in 'Total de horas estimadas', with: 48
+    click_on 'Enviar'
+
+    expect(page).to have_content('Você se candidatou a esse projeto')
   end
 end
