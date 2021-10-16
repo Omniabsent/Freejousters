@@ -12,7 +12,6 @@
 
 <% if current_user.role == 'hireable' then %>
   <h1>Candidate-se a esse projeto:</h1>
-
   <%= form_with model: [@project, @proposal] do |f| %>
     <div>
       <%= f.label :presentation, 'Apresentação' %>
@@ -33,3 +32,17 @@
     <%= f.submit 'Enviar' %>
   <%end%>
 <%end%>
+
+
+  <% if current_user.role == 'hirer' && current_user == @project.user then %>
+    <h1>Candidatos:</h1>
+    <% @project.proposal.each do |pp| %>
+      <li>
+        Proposta de: <%= pp.user %>
+        Apresentação: <%= pp.presentation %>
+        Cobrança [hora]: <%= pp.charges %>
+        Horas semanais disponíveis: <%= pp.week_hours %>
+        Horas totais estimadas para o projeto: <%= pp.total_hours %>
+      </li>
+    <%end%>
+  <%end%>
