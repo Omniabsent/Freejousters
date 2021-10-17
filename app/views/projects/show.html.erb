@@ -33,17 +33,15 @@
   <%end%>
 <%end%>
 
-
-  <% if current_user.role == 'hirer' && current_user == @project.user then %>
-    <h1>Candidatos:</h1>
-
-    <% @project.proposal.each do |pp| %>
-        <li>
-          <li>Proposta de: <%= pp.user %></li>
-          <li>Apresentação: <%= pp.presentation %></li>
-          <li>Cobrança [hora]: <%= pp.charges %></li>
-          <li>Horas semanais disponíveis: <%= pp.week_hours %></li>
-          <li>Horas totais estimadas para o projeto: <%= pp.total_hours %></li>
-        </li>
-      <%end%>
+<% if current_user.role == 'hirer' && current_user == @project.user then %>
+  <h1>Candidatos:</h1>
+  <% @project.proposal.each do |pp| %>
+    <li>
+      <li>Proposta de: <%= pp.user.user_profile.social_name %></li
+      <li>Apresentação: <%= pp.presentation %></li>
+      <li>Cobrança [hora]: <%= pp.charges %></li>
+      <li>Horas semanais disponíveis: <%= pp.week_hours %></li>
+      <li>Horas totais estimadas para o projeto: <%= pp.total_hours %></li>
+    </li>
   <%end%>
+<%end%>

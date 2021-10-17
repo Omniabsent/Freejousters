@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
   def show
     id = params[:id]
     @project = Project.find(id)
-    @proposal = @project.proposal.new
+    @proposal = Proposal.new
   end
 
   def my_projects
