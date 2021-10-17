@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_003906) do
     t.integer "charges"
     t.integer "week_hours"
     t.integer "total_hours"
-    t.string "approval"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_proposals_on_project_id"

@@ -1,7 +1,7 @@
 <h1> Bem vindo ao Freejouster! </h1>
 
 <%if user_signed_in? then %>
-<h3>Bem vindo, você está logado como: <%=current_user.email %></h3>
+<h3>Bem vindo, <%=current_user.user_profile.social_name %>!</h3>
   <%if current_user.role == 'hirer' then%>
     <% if current_user.user_profile.nil? then  %>
       <p><%=link_to 'Criar perfil', new_user_profile_path %>

@@ -7,7 +7,7 @@ class CreateProposals < ActiveRecord::Migration[6.1]
       t.integer :charges
       t.integer :week_hours
       t.integer :total_hours
-      t.string :approval
+      t.integer :status, default: 0
 
       t.timestamps
     end

@@ -6,7 +6,7 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = Proposal.new(params.require(:proposal).permit(:presentation, :charges, :week_hours, :total_hours, :project_id, :approval))
-    @proposal.approval = 'pending'
+    @proposal.status = 'pending'
     @proposal.user = current_user
     @proposal.project = Project.find(params[:project_id])
     @proposal.save!
@@ -17,6 +17,18 @@ class ProposalsController < ApplicationController
   def show
     id = params[:id]
     @proposal = Proposal.find(id)
+  end
+
+  def accept
+    @proposal = Proposal.find(params[:id])
+    @proposal.accepted!
+    redirect_to request.referer
+  end
+
+  def reject
+    @proposal = Proposal.find(params[:id])
+    @proposal.rejected!
+    redirect_to request.referer
   end
 
   def proposals_to_my_projects

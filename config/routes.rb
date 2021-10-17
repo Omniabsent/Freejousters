@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resources :user_profiles
   resources :users, only: [:show]
   resources :projects, only: [:new, :create, :show] do
-    resources :proposals, only: [:show, :new, :create, :index]
+    resources :proposals, only: [:show, :new, :create, :index] do
+      post 'accept', on: :member
+      post 'reject', on: :member
+    end
   end
   get '/my_projects', to: 'projects#my_projects'
   get '/all_projects', to: 'projects#all_projects'
