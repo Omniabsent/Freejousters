@@ -42,7 +42,7 @@
       <li>Cobrança [hora]: <%= pp.charges %></li>
       <li>Horas semanais disponíveis: <%= pp.week_hours %></li>
       <li>Horas totais estimadas para o projeto: <%= pp.total_hours %></li>
-      <li>Status: <%= pp.status %></li>
+      <li>Status: Proposta de <%= pp.user.user_profile.social_name%> <%= pp.status %></li>
       <% if pp.status == 'pending' then %>
         <%= link_to "Aprovar #{pp.user.user_profile.social_name}", accept_project_proposal_path(pp.id), method: :post %>
         <%= link_to "Rejeitar #{pp.user.user_profile.social_name}", reject_project_proposal_path(pp.id), method: :post %>

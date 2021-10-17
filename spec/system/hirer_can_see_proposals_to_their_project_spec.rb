@@ -34,6 +34,6 @@ describe 'hirer sees proposals to their project' do
     click_on 'Salvar Nassau'
     click_on "Aprovar #{professional_profile.social_name}"
 
-    expect(page).to have_content("Proposta de: #{user_profile.social_name} aprovada")
+    expect(page).to have_content("Proposta de #{professional_profile.social_name} accepted")
   end
 end
