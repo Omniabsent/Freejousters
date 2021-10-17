@@ -24,6 +24,6 @@ class ProposalsController < ApplicationController
   end
 
   def my_proposals
-    @proposal.user_id = current_user.id
+    @project = current_user.project
   end
 end

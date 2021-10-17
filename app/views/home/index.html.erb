@@ -2,17 +2,22 @@
 
 <%if user_signed_in? then %>
 <h3>Bem vindo, você está logado como: <%=current_user.email %></h3>
-<p><%=link_to 'Projetos disponíveis', all_projects_path %></p>
   <%if current_user.role == 'hirer' then%>
-    <p><%=link_to 'Meus projetos', my_projects_path %></p>
-    <p><%=link_to 'Criar novo projeto', new_project_path %></p>
-    <p><%=link_to 'Propostas de profissionais', '#' %></p>
+    <% if current_user.user_profile.nil? then  %>
+      <p><%=link_to 'Criar perfil', new_user_profile_path %>
+      <h5>Opções de uso do sistema serão liberadas apenas após a criação do perfil no link acima</h5>
+    <%else%>
+      <p><%=link_to 'Meu perfil', user_profile_path(current_user.user_profile) %></p>
+      <p><%=link_to 'Meus projetos', my_projects_path %></p>
+      <p><%=link_to 'Criar novo projeto', new_project_path %></p>
+    <%end%>
   <%elsif current_user.role == 'hireable' %>
     <% if current_user.user_profile.nil? then  %>
       <p><%=link_to 'Criar perfil profissional', new_user_profile_path %>
       <h5>Opções de uso do sistema serão liberadas apenas após a criação do perfil no link acima</h5>
     <%else%>
       <p><%=link_to 'Meu perfil', user_profile_path(current_user.user_profile) %></p>
+      <p><%=link_to 'Projetos disponíveis', all_projects_path %></p>
       <p><%=link_to 'Projetos que estou participando', my_proposals_path %></p>
     <%end%>
   <%else%>

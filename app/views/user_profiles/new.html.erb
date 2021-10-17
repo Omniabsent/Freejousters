@@ -19,18 +19,20 @@
     <%= f.label :birth_date, 'Nascimento' %>
     <%= f.date_field :birth_date %>
   </div>
-  <div>
-    <%= f.label :major, 'Formação' %>
-    <%= f.text_field :major %>
-  </div>
-  <div>
-    <%= f.label :bio, 'Descrição' %>
-    <%= f.text_field :bio %>
-  </div>
-  <div>
-    <%= f.label :experience, 'Experiência' %>
-    <%= f.text_field :experience %>
-  </div>
+  <%if current_user.role == 'hireable' then%>
+    <div>
+      <%= f.label :major, 'Formação' %>
+      <%= f.text_field :major %>
+    </div>
+    <div>
+      <%= f.label :bio, 'Descrição' %>
+      <%= f.text_field :bio %>
+    </div>
+    <div>
+      <%= f.label :experience, 'Experiência' %>
+      <%= f.text_field :experience %>
+    </div>
+  <%end%>
   <div>
     <%= f.label :picture, 'Foto [link]' %>
     <%= f.text_field :picture %>

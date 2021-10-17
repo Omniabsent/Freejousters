@@ -4,13 +4,14 @@
 <div id=leftbox>
   Nome: <%= u.social_name %><br>
   Nome conforme documentos: <%= u.name %><br>
-  Descrição: <%= u.bio%><br>
-  Formação: <%= u.major%><br>
-  Expriência: <%= u.experience%><br>
+  <%if u.user.role == 'hirable' then%>
+    Descrição: <%= u.bio%><br>
+    Formação: <%= u.major%><br>
+    Expriência: <%= u.experience%><br>
+  <%end%>
   Nascimento: <%= u.birth_date%><br>
 
-  <% if current_user.id == @user_profile.id then %>
-    <p><%=link_to 'Modificar meu perfil', edit_user_profile_path(current_user.user_profile) %></p>
+  <% if current_user == @user_profile then %>
   <%# elsif current_user.role == 'hirer' then %>
     <%#= f.label :favourite, 'Profissional favorito' %>
     <%#= f.check_box :favourite %>
@@ -19,4 +20,6 @@
 </div>
 <div id=rightbox>
   <img src="<%= u.picture%>"><br>
+  <p><%=link_to 'Modificar meu perfil', edit_user_profile_path(current_user.user_profile) %></p>
+  ^ Função assombrada dando update sem where, não usar por enquanto
 </div>
