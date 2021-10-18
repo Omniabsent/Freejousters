@@ -13,7 +13,7 @@ Brought to you with the use of:
 
 * Manjaro 21.1.3
 
-* Large amounts of gummy bears
+* Large amounts of black metal and gummy bears
 
 Stay tuned for more info about this project in the following days!
 

@@ -30,17 +30,17 @@ describe 'professional logs in' do
     expect(page).to have_link('Projetos disponíveis')
   end
 
-  # it 'and edits profile' do
-  #   user = User.create!(email: 'edward@teach.com', password: 'asdfasdf', role: 'hireable')
-  #   user_profile = UserProfile.create(name: 'Edward Teach', social_name: 'Blackbeard', birth_date: '01/01/1700', major: 'Captain', bio: 'The Scourge Of The Seven Seas', experience: 'Over a decade as the captain of the Queen Anne', picture: 'blackbeard.jpg', user: user)
-  #
-  #   login_as user
-  #   visit root_path
-  #   click_on 'Meu perfil'
-  #   click_on 'Modificar meu perfil'
-  #   fill_in 'Experiência', with: 'Captain and helmsman of the Queen Anne\'s Revenge for over 15 years'
-  #   click_on 'Editar'
-  #
-  #   expect(page).to have_content('Captain and helmsman of the Queen Anne\'s Revenge for over 15 years')
-  # end
+  it 'and edits profile' do
+    user = User.create!(email: 'edward@teach.com', password: 'asdfasdf', role: 'hireable')
+    user_profile = UserProfile.create(name: 'Edward Teach', social_name: 'Blackbeard', birth_date: '01/01/1700', major: 'Captain', bio: 'The Scourge Of The Seven Seas', experience: 'Over a decade as the captain of the Queen Anne', picture: 'blackbeard.jpg', user: user)
+
+    login_as user
+    visit root_path
+    click_on 'Meu perfil'
+    click_on 'Modificar meu perfil'
+    fill_in 'Experiência', with: 'Captain and helmsman of the Queen Anne\'s Revenge for over 15 years'
+    click_on 'Editar'
+
+    expect(page).to have_content('Captain and helmsman of the Queen Anne\'s Revenge for over 15 years')
+  end
 end

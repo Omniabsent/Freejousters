@@ -4,7 +4,7 @@
 <div id=leftbox>
   Nome: <%= u.social_name %><br>
   Nome conforme documentos: <%= u.name %><br>
-  <%if u.user.role == 'hirable' then%>
+  <%if u.user.role == 'hireable' then%>
     Descrição: <%= u.bio%><br>
     Formação: <%= u.major%><br>
     Expriência: <%= u.experience%><br>
@@ -21,6 +21,4 @@
 <div id=rightbox>
   <img src="<%= u.picture%>"><br>
   <p><%=link_to 'Modificar meu perfil', edit_user_profile_path(current_user.user_profile) %></p>
-  ^ Função assombrada dando update sem where, não usar por enquanto<br>
-  ^ Na verdade descobri que ela dá where mas aí loopa por todos os ids da tabela, o que é pior ainda
 </div>
