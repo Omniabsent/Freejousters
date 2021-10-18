@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post 'accept', on: :member
       post 'reject', on: :member
     end
+    post 'encerrado', on: :member
   end
   get '/my_projects', to: 'projects#my_projects'
   get '/all_projects', to: 'projects#all_projects'

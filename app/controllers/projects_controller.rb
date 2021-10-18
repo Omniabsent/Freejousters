@@ -29,6 +29,12 @@ class ProjectsController < ApplicationController
     @proposal = Proposal.new
   end
 
+  def encerrado
+    @project = Project.find(params[:id])
+    @project.encerrado!
+    redirect_to request.referer
+  end
+
   def my_projects
     @project = current_user.project
   end

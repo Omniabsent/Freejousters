@@ -5,7 +5,10 @@
 <% end %>
 <% @project.each do |p| %>
   <div>
-    <h3><%= link_to p.title, project_path(p.id) %></h3>
+    <h3><%= link_to p.title, project_path(p.id) %>
+      <% if p.status == 'encerrado' then %>
+        (encerrado)
+      <%end%></h3>
     <p> <%= p.description %></p><br>
   </div>
 <%end%>

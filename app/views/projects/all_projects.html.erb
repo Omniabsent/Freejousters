@@ -10,7 +10,7 @@ Deve ser visível pra ambos roles-->
 
 
 <% @project.each do |p| %>
-  <% if p.expiration_date > DateTime.now then %>
+  <% if p.expiration_date > DateTime.now && p.status == 'ativo' then %>
     <div>
       <h3><%= link_to p.title, project_path(p.id) %></h3>
       <p> <%= p.description %></p><br>
