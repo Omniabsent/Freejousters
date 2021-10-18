@@ -1,6 +1,5 @@
 class UserProfile < ApplicationRecord
   belongs_to :user
-  has_many :proposals
 
   if :check_if_hireable == true then
     validates :name, :social_name, :birth_date, :major, :bio, :experience, :picture, presence: true
