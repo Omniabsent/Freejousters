@@ -10,6 +10,8 @@
     Expriência: <%= u.experience%><br>
   <%end%>
   Nascimento: <%= u.birth_date%><br>
+  Contato: <%= u.user.email %><br>
+  Nota: <\em construção>
 
   <% if current_user == @user_profile then %>
   <%# elsif current_user.role == 'hirer' then %>
@@ -21,4 +23,10 @@
 <div id=rightbox>
   <img src="<%= u.picture%>"><br>
   <p><%=link_to 'Modificar meu perfil', edit_user_profile_path(current_user.user_profile) %></p>
+</div>
+
+<div>
+  <%if u.user.role == 'hireable' then%>
+    Projetos anteriores: <\em construção><br>
+  <%end%>
 </div>

@@ -1,10 +1,10 @@
 <h1>Minhas propostas</h1>
-<% if @proposal.nil? then %>
+<% if current_user.proposals.nil? then %>
   Você ainda não se candidatou em nenhum projeto
 <% else %>
-  <% @proposals.each do |p| %>
+  <% current_user.proposals.each do |p| %>
     <div>
-      <h3><%= link_to p.project, project_path(p.id) %></h3>
+      <h3><%= link_to p.project.title, project_path(p.id) %>, de <%= p.project.user.user_profile.social_name%></h3>
     </div>
   <%end%>
 <%end%>

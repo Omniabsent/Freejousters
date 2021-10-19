@@ -9,6 +9,7 @@
 <%else%>
 <p>Trabalho presencial</p>
 <%end%>
+Responsável pelo projeto: <%= link_to p.user.user_profile.social_name, user_profile_path(p.user.id) %><br>
 
 <% if current_user.role == 'hireable' then %>
   <h1>Candidate-se a esse projeto:</h1>
@@ -39,7 +40,7 @@
   <h1>Candidatos:</h1>
   <% @project.proposal.each do |pp| %>
     <li>
-      <li>Proposta de: <%= pp.user.user_profile.social_name %></li
+      <li>Proposta de: <%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.id) %></li
       <li>Apresentação: <%= pp.presentation %></li>
       <li>Cobrança [hora]: <%= pp.charges %></li>
       <li>Horas semanais disponíveis: <%= pp.week_hours %></li>

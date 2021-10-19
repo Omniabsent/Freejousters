@@ -37,4 +37,8 @@ describe 'professional searchs for project' do
 
     expect(page).to have_content('Você se candidatou a esse projeto')
   end
+
+  it 'and, if approved, they can browse the profiles of the team' do
+
+  end
 end
