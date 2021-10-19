@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_18_003229) do
+ActiveRecord::Schema.define(version: 2021_10_19_073420) do
+
+  create_table "feedbacks_to_professionals", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "proposal_id", null: false
+    t.integer "professional_id"
+    t.string "message"
+    t.integer "stars"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proposal_id"], name: "index_feedbacks_to_professionals_on_proposal_id"
+    t.index ["user_id"], name: "index_feedbacks_to_professionals_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
@@ -67,6 +79,8 @@ ActiveRecord::Schema.define(version: 2021_10_18_003229) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "feedbacks_to_professionals", "proposals"
+  add_foreign_key "feedbacks_to_professionals", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "proposals", "projects"
   add_foreign_key "proposals", "users"

@@ -28,7 +28,7 @@ class ProposalsController < ApplicationController
   def reject
     @proposal = Proposal.find(params[:id])
     @proposal.rejected!
-    redirect_to request.referer
+    redirect_to to_rejected_professionals_path
   end
 
   def proposals_to_my_projects

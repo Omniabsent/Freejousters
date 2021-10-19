@@ -32,7 +32,6 @@
     <%= f.submit 'Enviar' %>
   <%end%>
 <%end%>
-Status: <%= p.status %>
 <% if current_user.role == 'hirer' && current_user == @project.user then %>
   <% if p.status == 'ativo' then %>
     <%= link_to "Encerrar projeto", encerrado_project_path(p.id), method: :post %>
