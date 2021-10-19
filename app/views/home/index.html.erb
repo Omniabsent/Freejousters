@@ -21,7 +21,7 @@
       <h3>Bem vindo, <%=current_user.user_profile.social_name %>!</h3>
       <p><%=link_to 'Meu perfil', user_profile_path(current_user.user_profile) %></p>
       <p><%=link_to 'Projetos disponíveis', all_projects_path %></p>
-      <p><%=link_to 'Projetos que estou participando', my_proposals_path %></p>
+      <p><%=link_to 'Projetos que me candidatei', my_proposals_path %></p>
     <%end%>
   <%else%>
     <h2>Selecione a função desejada:</h2>

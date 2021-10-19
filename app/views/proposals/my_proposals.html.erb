@@ -5,6 +5,13 @@
   <% current_user.proposals.each do |p| %>
     <div>
       <h3><%= link_to p.project.title, project_path(p.id) %>, de <%= p.project.user.user_profile.social_name%></h3>
+      <% if p.status == 'accepted' then %>
+        (Proposta aceita)
+      <% elsif p.status == 'rejected' then %>
+        (Proposta rejeitada)
+      <%else%>
+        (Proposta pendente)
+      <%end%>
     </div>
   <%end%>
 <%end%>
