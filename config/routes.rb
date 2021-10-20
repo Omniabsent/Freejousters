@@ -18,8 +18,4 @@ Rails.application.routes.draw do
   get '/all_projects', to: 'projects#all_projects'
   get 'search', to: "projects#search"
   get '/my_proposals', to: 'proposals#my_proposals'
-  get '/proposals_to_my_projects', to: 'proposals#proposals_to_my_projects'
-  resources :feedbacks_to_professionals do
-    get '/to_rejected', to: 'feedbacks_to_professionals#to_rejected'
-  end
 end

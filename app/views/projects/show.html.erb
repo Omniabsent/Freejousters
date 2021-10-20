@@ -52,10 +52,9 @@ Responsável pelo projeto: <%= link_to p.user.user_profile.social_name, user_pro
       <% end %>
       <% if pp.status == 'rejected' then %>
         <h6> Motivo para a rejeição da proposta de <%= pp.user.user_profile.social_name %>: </h6>
-        <%= form_with model: FeedbacksToProfessional.new do |f| %>
-          <%= f.label :message, 'Motivo' %>
-          <%= f.text_field :message %>
-          <%= f.hidden_field :proposal, value: pp.id %>
+        <%= form_for @project_proposal do |f| %>
+          <%= f.label :feedback, 'Motivo' %>
+          <%= f.text_field :feedback %>
           <%= f.submit 'Enviar' %>
         <%end%>
       <%end%>
