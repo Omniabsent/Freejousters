@@ -50,6 +50,15 @@ Responsável pelo projeto: <%= link_to p.user.user_profile.social_name, user_pro
         <%= link_to "Aprovar #{pp.user.user_profile.social_name}", accept_project_proposal_path(pp.id), method: :post %>
         <%= link_to "Rejeitar #{pp.user.user_profile.social_name}", reject_project_proposal_path(pp.id), method: :post %>
       <% end %>
+      <% if pp.status == 'rejected' then %>
+        <h6> Motivo para a rejeição da proposta de <%= pp.user.user_profile.social_name %>: </h6>
+        <%= form_with model: FeedbacksToProfessional.new do |f| %>
+          <%= f.label :message, 'Motivo' %>
+          <%= f.text_field :message %>
+          <%= f.hidden_field :proposal, value: pp.id %>
+          <%= f.submit 'Enviar' %>
+        <%end%>
+      <%end%>
     </li>
   <%end%>
 <%end%>
