@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :user_profiles
   resources :users, only: [:show]
   resources :projects, only: [:new, :create, :show] do
-    resources :proposals, only: [:show, :new, :create, :index] do
+    resources :proposals, only: [:show, :new, :create, :index, :edit] do
       post 'accept', on: :member
       post 'reject', on: :member
     end

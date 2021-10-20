@@ -31,8 +31,14 @@ class ProposalsController < ApplicationController
     redirect_to request.referer
   end
 
-  def proposals_to_my_projects
-    @proposal = current_user.proposals.projects
+  def edit
+    @proposal = Proposal.find(params[:id])
+  end
+
+  def update
+    @proposal = Proposal.find(params[:id])
+    @proposal.update(params.require(:proposal).permit(:feedback))
+    redirect_to request.referer
   end
 
   def my_proposals

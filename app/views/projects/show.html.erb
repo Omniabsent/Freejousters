@@ -33,6 +33,7 @@ Responsável pelo projeto: <%= link_to p.user.user_profile.social_name, user_pro
     <%= f.submit 'Enviar' %>
   <%end%>
 <%end%>
+
 <% if current_user.role == 'hirer' && current_user == @project.user then %>
   <% if p.status == 'ativo' then %>
     <%= link_to "Encerrar projeto", encerrado_project_path(p.id), method: :post %>
@@ -46,13 +47,16 @@ Responsável pelo projeto: <%= link_to p.user.user_profile.social_name, user_pro
       <li>Horas semanais disponíveis: <%= pp.week_hours %></li>
       <li>Horas totais estimadas para o projeto: <%= pp.total_hours %></li>
       <li>Status: Proposta de <%= pp.user.user_profile.social_name%> <%= pp.status %></li>
+      <% if p.status == 'encerrado' then %>
+        <h4>Postar feedback sobre o trabalho de <%= pp.user.user_profile.social_name%> </h4>
+      <%end%>
       <% if pp.status == 'pending' then %>
         <%= link_to "Aprovar #{pp.user.user_profile.social_name}", accept_project_proposal_path(pp.id), method: :post %>
         <%= link_to "Rejeitar #{pp.user.user_profile.social_name}", reject_project_proposal_path(pp.id), method: :post %>
       <% end %>
       <% if pp.status == 'rejected' then %>
         <h6> Motivo para a rejeição da proposta de <%= pp.user.user_profile.social_name %>: </h6>
-        <%= form_for @project_proposal do |f| %>
+        <%= form_for pp do |f| %>
           <%= f.label :feedback, 'Motivo' %>
           <%= f.text_field :feedback %>
           <%= f.submit 'Enviar' %>
@@ -60,4 +64,6 @@ Responsável pelo projeto: <%= link_to p.user.user_profile.social_name, user_pro
       <%end%>
     </li>
   <%end%>
+
+
 <%end%>
