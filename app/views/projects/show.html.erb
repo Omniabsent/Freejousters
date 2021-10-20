@@ -97,11 +97,16 @@
 <% if current_user.role == 'hirer' then %>
   <div id=left><!-- essa div inteira só deveria aparecer se o candidato foi aceito pelo contratador-->
     <h1>Feedbacks</h1>
-    <p>Esses foram os feedbacks dados pelos profissionais sobre ter trabalhado nesse projeto:</p>
+    <p>Esses foram os feedbacks dados pelos profissionais sobre terem trabalhado nesse projeto:</p>
   </div>
 <%end%>
 
 
 <div id=right>
   <h1>Equipe deste projeto:</h1>
+  <% @project.proposal.each do |pp| %>
+    <% if pp.status == 'accepted' then %>
+    <li><%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.id) %></li>
+    <%end%>
+  <%end%>
 </div>

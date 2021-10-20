@@ -28,7 +28,12 @@
 </div>
 
 <div>
-  <%if u.user.role == 'hireable' then%>
-    Projetos anteriores: <\em construção><br>
+
+<%if u.user.role == 'hireable' then%>
+  Projetos anteriores: <br>
+  <% u.user.proposal.each do |up| %>
+    <% if up.project.status == 'encerrado' then %>
+      <li><%= link_to up.project.title, project_path(up.id) %></li>
+    <%end%>
   <%end%>
-</div>
+<%end%>
