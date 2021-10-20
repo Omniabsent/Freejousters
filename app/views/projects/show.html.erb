@@ -47,6 +47,7 @@ Responsável pelo projeto: <%= link_to p.user.user_profile.social_name, user_pro
       <li>Horas semanais disponíveis: <%= pp.week_hours %></li>
       <li>Horas totais estimadas para o projeto: <%= pp.total_hours %></li>
       <li>Status: Proposta de <%= pp.user.user_profile.social_name%> <%= pp.status %></li>
+      Proposal id: <%= pp.id %>
       <% if p.status == 'encerrado' then %>
         <h4>Postar feedback sobre o trabalho de <%= pp.user.user_profile.social_name%> </h4>
       <%end%>
@@ -56,9 +57,9 @@ Responsável pelo projeto: <%= link_to p.user.user_profile.social_name, user_pro
       <% end %>
       <% if pp.status == 'rejected' then %>
         <h6> Motivo para a rejeição da proposta de <%= pp.user.user_profile.social_name %>: </h6>
-        <%= form_for pp do |f| %>
-          <%= f.label :feedback, 'Motivo' %>
-          <%= f.text_field :feedback %>
+        <% form_for @project_proposal do |f| %>
+          <%= f.label :justification, 'Motivo' %>
+          <%= f.text_field :justification %>
           <%= f.submit 'Enviar' %>
         <%end%>
       <%end%>

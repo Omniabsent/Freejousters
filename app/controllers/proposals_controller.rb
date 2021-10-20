@@ -37,7 +37,7 @@ class ProposalsController < ApplicationController
 
   def update
     @proposal = Proposal.find(params[:id])
-    @proposal.update(params.require(:proposal).permit(:feedback))
+    @proposal.update(params.require(:proposal).permit(:justification))
     redirect_to request.referer
   end
 
