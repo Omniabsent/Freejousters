@@ -22,7 +22,9 @@
 </div>
 <div id=rightbox>
   <img src="<%= u.picture%>"><br>
-  <p><%=link_to 'Modificar meu perfil', edit_user_profile_path(current_user.user_profile) %></p>
+  <%if u.id == current_user.id %>
+    <p><%=link_to 'Modificar meu perfil', edit_user_profile_path(current_user.user_profile) %></p>
+  <%end%>
 </div>
 
 <div>
