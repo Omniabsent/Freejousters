@@ -53,14 +53,16 @@
       Sua proposta:
       <% current_user.proposal.each do |pp| %>
         <% if pp.project == @project then %>
-          <li>Proposta de: <%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.id) %></li>
+          <li>Proposta de: <%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.user_profile.id) %></li>
           <li>Apresentação: <%= pp.presentation %></li>
           <li>Cobrança [hora]: <%= pp.charges %></li>
           <li>Horas semanais disponíveis: <%= pp.week_hours %></li>
           <li>Horas totais estimadas para o projeto: <%= pp.total_hours %></li>
           <li>Status: Proposta de <%= pp.user.user_profile.social_name%> <%= pp.status %></li>
           <% if pp.status != 'cancelled' && pp.status != 'rejected' then %>
-            <%= link_to 'Cancelar proposta', cancel_project_proposal_path(@project.id, pp.id), method: :post %>
+            <% if pp.updated_at > 3.days.ago || pp.status != 'accepted' then %>
+              <%= link_to 'Cancelar proposta', cancel_project_proposal_path(@project.id, pp.id), method: :post %>
+            <%end%>
           <%end%>
         <%end%>
       <%end%>
