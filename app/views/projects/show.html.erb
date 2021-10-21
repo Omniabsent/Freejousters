@@ -91,6 +91,7 @@
   <div id=right>
     <h1>Candidatos:</h1>
     <% @project.proposal.each do |pp| %>
+      <% if !(pp.status == 'cancelled' && pp.justification.nil?) then%>
       <p>
         <li>Proposta de: <%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.user_profile.id) %></li>
         <li>Apresentação: <%= pp.presentation %></li>
@@ -111,6 +112,7 @@
           <li>Motivo do cancelamento: <%= pp.justification %></li>
         <%end%>
       </p>
+      <%end%>
     <%end%>
   </div>
 <%end%>
