@@ -103,6 +103,10 @@ describe 'hirer sees proposals to their project' do
 
   end
 
+  it 'and the the hirer can see pressional\'s justification' do
+
+  end
+
   it 'and the candidate cannot cancel proposal more than 3 days after it was approved' do
     professional = User.create!(email: 'edward@teach.com', password: 'asdfasdf', role: 'hireable')
     professional_profile = UserProfile.create!(name: 'Edward Teach', social_name: 'Blackbeard', birth_date: '01/01/1700', major: 'Captain', bio: 'The Scourge Of The Seven Seas', experience: 'Over a decade as the captain of the Queen Anne', picture: 'blackbeard.jpg', user: professional)

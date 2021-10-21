@@ -4,6 +4,6 @@ class Project < ApplicationRecord
 
   validates :title, :description, :wanted_skills, :max_pay, :expiration_date, presence: true
 
-  enum status: {ativo:1, encerrado:2}
+  enum status: {ativo:1, encerrado:2, fechado:3}
 
 end

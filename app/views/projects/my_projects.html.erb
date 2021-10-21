@@ -8,6 +8,8 @@
     <h3><%= link_to p.title, project_path(p.id) %>
       <% if p.status == 'encerrado' then %>
         (encerrado)
+      <% elsif p.status == 'fechado' then %>
+        (fechado)
       <%end%></h3>
     <p> <%= p.description %></p><br>
   </div>

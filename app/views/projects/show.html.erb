@@ -22,9 +22,13 @@
     <p>Trabalho presencial</p>
   <%end%>
   <p>Responsável pelo projeto: <%= link_to p.user.user_profile.social_name, user_profile_path(p.user.id) %></p>
-  <% if current_user.role == 'hirer' && current_user == @project.user && p.status == 'ativo' then %>
+  <% if current_user.role == 'hirer' && current_user == @project.user && p.status != 'encerrado' then %>
     <p><%= link_to "Encerrar projeto", encerrado_project_path(p.id), method: :post %></p>
   <% end %>
+  <% if current_user.role == 'hirer' && current_user == @project.user && p.status == 'ativo' then %>
+    <p><%= link_to "Fechar inscrições para o projeto", fechado_project_path(p.id), method: :post %></p>
+  <% end %>
+  Status do projeto: <%=p.status%>  
 </div>
 
 <% if current_user.role == 'hireable' then %>

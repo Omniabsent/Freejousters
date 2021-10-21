@@ -14,10 +14,12 @@ Rails.application.routes.draw do
       post 'cancel', on: :member
     end
     post 'encerrado', on: :member
+    post 'fechado', on: :member
   end
   get '/my_projects', to: 'projects#my_projects'
   get '/all_projects', to: 'projects#all_projects'
   get 'search', to: "projects#search"
   get '/my_proposals', to: 'proposals#my_proposals'
   get '/proposals/reject', to: 'proposals#reject'
+  get '/proposals/cancel', to: 'proposals#cancel'
 end
