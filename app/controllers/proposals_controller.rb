@@ -22,7 +22,7 @@ class ProposalsController < ApplicationController
   def cancel
     @proposal = Proposal.find(params[:id])
     @proposal.cancelled!
-    if @proposal.created_at > 3.days.ago || @proposal.status == 1 then
+    if @proposal.created_at <= 3.days.ago || @proposal.status == 1 then
       render "proposals/cancel"
     else
       redirect_to request.referer

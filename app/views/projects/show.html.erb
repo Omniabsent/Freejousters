@@ -30,28 +30,27 @@
 <% if current_user.role == 'hireable' then %>
   <div id=right> <!-- essa div inteira só deveria aparecer se o candidato ainda não se candidatou à esse projeto-->
     <h1>Candidate-se a esse projeto:</h1>
-    <% if current_user.proposal.nil? then %>
-      <%= form_with model: [@project, @proposal] do |f| %>
-        <div>
-          <%= f.label :presentation, 'Apresentação' %>
-          <%= f.text_field :presentation %>
-        </div>
-        <div>
-          <%= f.label :charges, 'Custo' %>
-          <%= f.number_field :charges  %>
-        </div>
-        <div>
-          <%= f.label :week_hours, 'Horas semanais disponíveis' %>
-          <%= f.number_field :week_hours %>
-        </div>
-        <div>
-          <%= f.label :total_hours, 'Total de horas estimadas' %>
-          <%= f.number_field :total_hours %>
-        </div>
-        <%= f.submit 'Enviar' %>
-      <%end%>
-    <%else%>
-      Sua proposta para esse projeto:
+    <%= form_with model: [@project, @proposal] do |f| %>
+      <div>
+        <%= f.label :presentation, 'Apresentação' %>
+        <%= f.text_field :presentation %>
+      </div>
+      <div>
+        <%= f.label :charges, 'Custo' %>
+        <%= f.number_field :charges  %>
+      </div>
+      <div>
+        <%= f.label :week_hours, 'Horas semanais disponíveis' %>
+        <%= f.number_field :week_hours %>
+      </div>
+      <div>
+        <%= f.label :total_hours, 'Total de horas estimadas' %>
+        <%= f.number_field :total_hours %>
+      </div>
+      <%= f.submit 'Enviar' %>
+    <%end%>
+    <div>
+      Sua proposta:
       <% current_user.proposal.each do |pp| %>
         <% if pp.project == @project then %>
           <li>Proposta de: <%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.id) %></li>
@@ -65,7 +64,7 @@
           <%end%>
         <%end%>
       <%end%>
-    <%end%>
+    </div>
   </div>
 <%end%>
 
@@ -82,7 +81,7 @@
     <h1>Candidatos:</h1>
     <% @project.proposal.each do |pp| %>
       <p>
-        <li>Proposta de: <%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.id) %></li>
+        <li>Proposta de: <%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.user_profile.id) %></li>
         <li>Apresentação: <%= pp.presentation %></li>
         <li>Cobrança [hora]: <%= pp.charges %></li>
         <li>Horas semanais disponíveis: <%= pp.week_hours %></li>
@@ -114,7 +113,7 @@
   <h1>Equipe deste projeto:</h1>
   <% @project.proposal.each do |pp| %>
     <% if pp.status == 'accepted' then %>
-    <li><%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.id) %></li>
+    <li><%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.user_profile.id) %></li>
     <%end%>
   <%end%>
 </div>
