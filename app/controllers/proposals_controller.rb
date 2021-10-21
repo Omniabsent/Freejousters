@@ -22,6 +22,7 @@ class ProposalsController < ApplicationController
   def cancel
     @proposal = Proposal.find(params[:id])
     if @proposal.status == 'accepted' then
+      @project = @proposal.project
       @proposal.cancelled!
       render "proposals/cancel"
     else
@@ -39,6 +40,7 @@ class ProposalsController < ApplicationController
 
   def reject
     @proposal = Proposal.find(params[:id])
+    @project = @proposal.project
     @proposal.rejected!
     render "proposals/reject"
   end
@@ -50,7 +52,8 @@ class ProposalsController < ApplicationController
   def update
     @proposal = Proposal.find(params[:id])
     @proposal.update(params.require(:proposal).permit(:justification))
-    redirect_to request.referer
+    @project = @proposal.project
+    redirect_to project_path(@project.id), notice: 'Justificativa enviada'
   end
 
   def my_proposals

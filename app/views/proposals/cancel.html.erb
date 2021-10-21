@@ -1,6 +1,6 @@
 <% p = @proposal %>
 <h6> Motivo para o cancelamento da proposta para trabalhar no projeto <%= p.project.title %>: </h6>
-<% form_for @proposal do |f| %>
+<%= form_with model: [@project, @proposal] do |f| %>
   <%= f.label :justification, 'Motivo' %>
   <%= f.text_field :justification %>
   <%= f.submit 'Enviar' %>

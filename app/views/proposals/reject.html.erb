@@ -1,7 +1,7 @@
 <% p = @proposal %>
 <h6> Motivo para a rejeição da proposta de <%= p.user.user_profile.social_name %>: </h6>
-<% form_for @proposal do |f| %>
+<%= form_with model: [@project, @proposal] do |f| %>
   <%= f.label :justification, 'Motivo' %>
-  <%= f.text_field :justification %>
+  <%= f.text_area :justification %>
   <%= f.submit 'Enviar' %>
 <%end%>

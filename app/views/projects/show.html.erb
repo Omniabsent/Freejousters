@@ -28,7 +28,7 @@
   <% if current_user.role == 'hirer' && current_user == @project.user && p.status == 'ativo' then %>
     <p><%= link_to "Fechar inscrições para o projeto", fechado_project_path(p.id), method: :post %></p>
   <% end %>
-  Status do projeto: <%=p.status%>  
+  Status do projeto: <%=p.status%>
 </div>
 
 <% if current_user.role == 'hireable' then %>
@@ -63,6 +63,11 @@
           <li>Horas semanais disponíveis: <%= pp.week_hours %></li>
           <li>Horas totais estimadas para o projeto: <%= pp.total_hours %></li>
           <li>Status: Proposta de <%= pp.user.user_profile.social_name%> <%= pp.status %></li>
+          <%if pp.status == 'rejected' then %>
+            <li>Motivo da rejeição: <%= pp.justification %></li>
+          <%elsif pp.status == 'cancelled' then %>
+              <li>Motivo do cancelamento: <%= pp.justification %></li>
+          <%end%>
           <% if pp.status != 'cancelled' && pp.status != 'rejected' then %>
             <% if pp.updated_at > 3.days.ago || pp.status != 'accepted' then %>
               <%= link_to 'Cancelar proposta', cancel_project_proposal_path(@project.id, pp.id), method: :post %>
@@ -100,6 +105,10 @@
         <% if pp.status == 'pending' then %>
           <%= link_to "Aprovar #{pp.user.user_profile.social_name}", accept_project_proposal_path(@project.id, pp.id), method: :post %>
           <%= link_to "Rejeitar #{pp.user.user_profile.social_name}", reject_project_proposal_path(@project.id, pp.id), method: :post %>
+        <%elsif pp.status == 'rejected' then %>
+          <li>Motivo da rejeição: <%= pp.justification %></li>
+        <%elsif pp.status == 'cancelled' then %>
+          <li>Motivo do cancelamento: <%= pp.justification %></li>
         <%end%>
       </p>
     <%end%>

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   post '/hireable', to: 'user#hireable'
   resources :user_profiles
   resources :users, only: [:show]
-  resources :projects, only: [:new, :create, :show] do
-    resources :proposals, only: [:show, :new, :create, :index, :edit] do
+  resources :projects, only: [:new, :create, :show, :edit, :update] do
+    resources :proposals, only: [:show, :new, :create, :index, :edit, :update] do
       post 'accept', on: :member
       post 'reject', on: :member
       post 'cancel', on: :member
@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   end
   get '/my_projects', to: 'projects#my_projects'
   get '/all_projects', to: 'projects#all_projects'
-  get 'search', to: "projects#search"
   get '/my_proposals', to: 'proposals#my_proposals'
   get '/proposals/reject', to: 'proposals#reject'
   get '/proposals/cancel', to: 'proposals#cancel'
+  get 'search', to: "projects#search"
 end
