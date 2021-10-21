@@ -19,6 +19,17 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(id)
   end
 
+  def cancel
+    @proposal = Proposal.find(params[:id])
+    @proposal.cancelled!
+    if @proposal.created_at > 3.days.ago || @proposal.status == 1 then
+      render "proposals/cancel"
+    else
+      redirect_to request.referer
+    end
+  end
+
+
   def accept
     @proposal = Proposal.find(params[:id])
     @proposal.accepted!
@@ -28,7 +39,7 @@ class ProposalsController < ApplicationController
   def reject
     @proposal = Proposal.find(params[:id])
     @proposal.rejected!
-    redirect_to request.referer
+    render "proposals/reject"
   end
 
   def edit

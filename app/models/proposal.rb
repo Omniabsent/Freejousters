@@ -4,6 +4,6 @@ class Proposal < ApplicationRecord
 
   validates :presentation, :charges, :week_hours, :total_hours, presence: true
 
-  enum status: {pending:0, accepted:1, rejected:2}
+  enum status: {pending:0, accepted:1, rejected:2, cancelled:3}
 
 end

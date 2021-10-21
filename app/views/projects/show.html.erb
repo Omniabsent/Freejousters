@@ -30,24 +30,41 @@
 <% if current_user.role == 'hireable' then %>
   <div id=right> <!-- essa div inteira só deveria aparecer se o candidato ainda não se candidatou à esse projeto-->
     <h1>Candidate-se a esse projeto:</h1>
-    <%= form_with model: [@project, @proposal] do |f| %>
-      <div>
-        <%= f.label :presentation, 'Apresentação' %>
-        <%= f.text_field :presentation %>
-      </div>
-      <div>
-        <%= f.label :charges, 'Custo' %>
-        <%= f.number_field :charges  %>
-      </div>
-      <div>
-        <%= f.label :week_hours, 'Horas semanais disponíveis' %>
-        <%= f.number_field :week_hours %>
-      </div>
-      <div>
-        <%= f.label :total_hours, 'Total de horas estimadas' %>
-        <%= f.number_field :total_hours %>
-      </div>
-      <%= f.submit 'Enviar' %>
+    <% if current_user.proposal.nil? then %>
+      <%= form_with model: [@project, @proposal] do |f| %>
+        <div>
+          <%= f.label :presentation, 'Apresentação' %>
+          <%= f.text_field :presentation %>
+        </div>
+        <div>
+          <%= f.label :charges, 'Custo' %>
+          <%= f.number_field :charges  %>
+        </div>
+        <div>
+          <%= f.label :week_hours, 'Horas semanais disponíveis' %>
+          <%= f.number_field :week_hours %>
+        </div>
+        <div>
+          <%= f.label :total_hours, 'Total de horas estimadas' %>
+          <%= f.number_field :total_hours %>
+        </div>
+        <%= f.submit 'Enviar' %>
+      <%end%>
+    <%else%>
+      Sua proposta para esse projeto:
+      <% current_user.proposal.each do |pp| %>
+        <% if pp.project == @project then %>
+          <li>Proposta de: <%= link_to pp.user.user_profile.social_name, user_profile_path(pp.user.id) %></li>
+          <li>Apresentação: <%= pp.presentation %></li>
+          <li>Cobrança [hora]: <%= pp.charges %></li>
+          <li>Horas semanais disponíveis: <%= pp.week_hours %></li>
+          <li>Horas totais estimadas para o projeto: <%= pp.total_hours %></li>
+          <li>Status: Proposta de <%= pp.user.user_profile.social_name%> <%= pp.status %></li>
+          <% if pp.status != 'cancelled' && pp.status != 'rejected' then %>
+            <%= link_to 'Cancelar proposta', cancel_project_proposal_path(@project.id, pp.id), method: :post %>
+          <%end%>
+        <%end%>
+      <%end%>
     <%end%>
   </div>
 <%end%>
@@ -76,18 +93,9 @@
           <h4>Postar feedback sobre o trabalho de <%= pp.user.user_profile.social_name%> </h4>
         <%end%>
         <% if pp.status == 'pending' then %>
-          <%= link_to "Aprovar #{pp.user.user_profile.social_name}", accept_project_proposal_path(pp.id), method: :post %>
-          <%= link_to "Rejeitar #{pp.user.user_profile.social_name}", reject_project_proposal_path(pp.id), method: :post %>
+          <%= link_to "Aprovar #{pp.user.user_profile.social_name}", accept_project_proposal_path(@project.id, pp.id), method: :post %>
+          <%= link_to "Rejeitar #{pp.user.user_profile.social_name}", reject_project_proposal_path(@project.id, pp.id), method: :post %>
         <%end%>
-
-            <%# if pp.status == 'rejected' then %>
-            <!--<h6> Motivo para a rejeição da proposta de <%#= pp.user.user_profile.social_name %>: </h6>-->
-            <%# form_for @project_proposal do |f| %>
-            <%#= f.label :justification, 'Motivo' %>
-            <%#= f.text_field :justification %>
-            <%#= f.submit 'Enviar' %>
-            <%#end%>
-            <%#end%>
       </p>
     <%end%>
   </div>

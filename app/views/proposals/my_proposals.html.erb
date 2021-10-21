@@ -1,8 +1,8 @@
 <h1>Minhas propostas</h1>
-<% if current_user.proposals.nil? then %>
+<% if @current_user.proposal.nil? then %>
   Você ainda não se candidatou em nenhum projeto
 <% else %>
-  <% current_user.proposals.each do |p| %>
+  <% current_user.proposal.each do |p| %>
     <div>
       <h3><%= link_to p.project.title, project_path(p.project.id) %>, de <%= p.project.user.user_profile.social_name%></h3>
       <% if p.status == 'accepted' then %>

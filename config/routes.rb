@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :proposals, only: [:show, :new, :create, :index, :edit] do
       post 'accept', on: :member
       post 'reject', on: :member
+      post 'cancel', on: :member
     end
     post 'encerrado', on: :member
   end
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
   get '/all_projects', to: 'projects#all_projects'
   get 'search', to: "projects#search"
   get '/my_proposals', to: 'proposals#my_proposals'
+  get '/proposals/reject', to: 'proposals#reject'
 end
