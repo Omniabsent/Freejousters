@@ -5,8 +5,8 @@ class FavouritesController < ApplicationController
   end
 
   def create
-    @favourite = Favourite.new(params.require(:favourite).permit(:id))
-    @favourite.favourite_user = params[:id]
+    @favourite = Favourite.new(params.permit(:favourite_user))
+    @favourite.favourite_user = (params[:favourite_user])
     @favourite.user = current_user
     @favourite.save!
 

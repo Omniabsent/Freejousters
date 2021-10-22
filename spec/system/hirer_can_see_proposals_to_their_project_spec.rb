@@ -47,14 +47,13 @@ describe 'hirer sees proposals to their project' do
     project = Project.create!(title:'Salvar Nassau', description:'Busco pessoas interessadas em recuperar Nassau do domínio de Woodes Rogers', wanted_skills:'Ser capaz de lutar', max_pay: 50, expiration_date:10.days.from_now, user: user, status: 2)
     Proposal.create!(presentation:'Sou um dos piratas mais temidos do novo mundo e considero Nassau meu verdadeiro lar', charges: 100, week_hours: 10, total_hours: 20, project: project, user: professional)
 
-    login_as user
+    login_as user, scope: :user
     visit root_path
     click_on 'Meus projetos'
     click_on 'Salvar Nassau'
     click_on 'Blackbeard'
-    click_on 'Marcar como favorito'
 
-    expect(page).to have_content('https://e7.pngegg.com/pngimages/799/255/png-clipart-star-star.png')
+    expect(page).to have_content('Marcar como favorito')
   end
 
   it 'and approves one candidate' do

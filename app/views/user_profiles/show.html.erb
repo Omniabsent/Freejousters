@@ -1,10 +1,8 @@
 <% u = @user_profile %>
 <h1><%=u.social_name%></h1>
 
-
-
 <div id=rightbox>
-  <%if u.id != current_user.id %>
+  <%if u.user.id != current_user.id %>
     <% current_user.favourite.each do |f| %>
       <% if f.favourite_user == u.user.id then %>
         <% @fav = true %>
@@ -14,8 +12,8 @@
         <% @fav = false %>
       <%end%>
     <%end%>
-    <% if @fav == false then%>
-      <%= link_to 'Marcar como favorito', favourites_path(u.user.id), method: :new %>
+    <% if @fav == false || @fav.nil? then%>
+      <%= link_to 'Marcar como favorito', favourites_path(:favourite_user => u.user.id), method: :new %>
     <%end%>
   <%end%>
 </div>
@@ -23,10 +21,12 @@
 
 <div id=leftbox>
   Nome: <%= u.social_name %>
-  <% if @fav == false then%>
-    <img src= 'https://upload.wikimedia.org/wikipedia/commons/f/fd/A_star.png' height=15p width=15p>
-  <%else%>
-    <img src='https://e7.pngegg.com/pngimages/799/255/png-clipart-star-star.png' height=15p width=15p>
+  <% if u.id != current_user.id then %>
+    <% if @fav == false || @fav.nil? then%>
+      <img src= 'https://upload.wikimedia.org/wikipedia/commons/f/fd/A_star.png' height=15p width=15p>
+    <%else%>
+      <img src='https://e7.pngegg.com/pngimages/799/255/png-clipart-star-star.png' height=15p width=15p>
+    <%end%>
   <%end%>
 
   <br>
