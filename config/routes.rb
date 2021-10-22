@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get '/proposals/reject', to: 'proposals#reject'
   get '/proposals/cancel', to: 'proposals#cancel'
   get 'search', to: "projects#search"
+  resources :favourites, only: [:new, :create, :destroy]
 end

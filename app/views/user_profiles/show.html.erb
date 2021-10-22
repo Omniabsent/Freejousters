@@ -1,8 +1,35 @@
 <% u = @user_profile %>
 <h1><%=u.social_name%></h1>
 
+
+
+<div id=rightbox>
+  <%if u.id != current_user.id %>
+    <% current_user.favourite.each do |f| %>
+      <% if f.favourite_user == u.user.id then %>
+        <% @fav = true %>
+        <%= link_to 'Remover favorito', favourite_path(f.id), method: :delete %>
+        <%break%>
+      <%else%>
+        <% @fav = false %>
+      <%end%>
+    <%end%>
+    <% if @fav == false then%>
+      <%= link_to 'Marcar como favorito', favourites_path(u.user.id), method: :new %>
+    <%end%>
+  <%end%>
+</div>
+
+
 <div id=leftbox>
-  Nome: <%= u.social_name %><br>
+  Nome: <%= u.social_name %>
+  <% if @fav == false then%>
+    <img src= 'https://upload.wikimedia.org/wikipedia/commons/f/fd/A_star.png' height=15p width=15p>
+  <%else%>
+    <img src='https://e7.pngegg.com/pngimages/799/255/png-clipart-star-star.png' height=15p width=15p>
+  <%end%>
+
+  <br>
   Nome conforme documentos: <%= u.name %><br>
   <%if u.user.role == 'hireable' then%>
     Descrição: <%= u.bio%><br>
@@ -12,14 +39,9 @@
   Nascimento: <%= u.birth_date%><br>
   Contato: <%= u.user.email %><br>
   Nota: <\em construção>
-
-  <% if current_user == @user_profile then %>
-  <%# elsif current_user.role == 'hirer' then %>
-    <%#= f.label :favourite, 'Profissional favorito' %>
-    <%#= f.check_box :favourite %>
-    <!-- coisas de favorito ainda sem tabela, fazer depois que tiver perfil pra hirer também -->
-  <%end%>
 </div>
+
+
 <div id=rightbox>
   <img src="<%= u.picture%>"><br>
   <%if u.id == current_user.id %>
@@ -27,7 +49,6 @@
   <%end%>
 </div>
 
-<div>
 
 <%if u.user.role == 'hireable' then%>
   Projetos anteriores: <br>
