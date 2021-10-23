@@ -52,8 +52,7 @@ describe 'hirer sees proposals to their project' do
     click_on 'Meus projetos'
     click_on 'Salvar Nassau'
     click_on 'Blackbeard'
-
-    expect(page).to have_content('Marcar como favorito')
+    expect(page).to have_link('Marcar como favorito')
   end
 
   it 'and approves one candidate' do

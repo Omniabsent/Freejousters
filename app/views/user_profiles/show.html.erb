@@ -43,7 +43,7 @@
 
 
 <div id=rightbox>
-  <img src="<%= u.picture%>"><br>
+  <img src="<%= u.picture%>" height=400p><br>
   <%if u.id == current_user.id %>
     <p><%=link_to 'Modificar meu perfil', edit_user_profile_path(current_user.user_profile) %></p>
   <%end%>
