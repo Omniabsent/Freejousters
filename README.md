@@ -30,14 +30,14 @@ Brought to you with the use of:
 
 * Open your prefered browser and visit localhost:3000
 
-* Login as any of the following:
- - If you want to be a captain with two active projects and a few proposals to them:
+* Log in as any of the following:
+  - If you want to be a captain with two active projects and a few proposals to them:
  email: 'captain@flint.com', password: '123456'
- - If you want to be a captain with a blank slate who comes up with a plan on the spot:
+  - If you want to be a captain with a blank slate who comes up with a plan on the spot:
  email: 'edward@teach.com', password: '123456'
- - If you want to be a crew member ready to fight:
+  - If you want to be a crew member ready to fight:
  email: 'anne@bonny.com', password: '123456'
- - If you want to be another crew member who also happens to be ready to fight:
+  - If you want to be another crew member who also happens to be ready to fight:
  email: 'jack@rackam.com', password: '123456'
 
  After loging in, you can browse the profile of whichever other user you come across in the system, as well as favourite them.
