@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+  before_action :authenticate_user!
+  
   def hirer
     @user = current_user
     @user.role = 'hirer'

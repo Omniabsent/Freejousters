@@ -1,7 +1,21 @@
 <h1>Página secreta pra eu anotar as coisas</h1>
 
-<p>user_id = current_user </p>
-<p>destinatary_id = </p>
+Testes e Organização do Código
 
-<%=@proposal.user%> = profissional
-<%=@project.user%> = hirer 
+PRIORIDADE:
+O projeto não possui nenhuma validação de autenticação, essa é uma falha grave de segurança;
+Precisa testar cenários alternativos: usuários não autenticados; cenários de autorização (quem pode aprovar uma proposta? quem pode encerrar um projeto?);
+
+
+Fazer também:
+Boa cobertura de testes (https://github.com/simplecov-ruby/simplecov) ; pode chegar a 100% com ajuda da gem shoulda_matchers (https://github.com/thoughtbot/shoulda-matchers);
+Pode adicionar testes unitários e testes de request para aumentar a cobertura;
+
+
+Rotas bem organizadas; cuidado com o excesso de rotas fora de ‘resources’; pesquise sobre scope e namespaces, podem ajudar na organização; cuidado com rotas em pt-br, se for uma necessidade/vontade pode usar i18n para rotas;
+Nas views pode reduzir a lógica de alguns cenários por métodos nos models; exemplo: quem pode encerrar um projeto?
+Ainda não configurou i18n; talvez quanto mais tarde mais custoso fique;
+
+
+Models bem declarados; boas escolhas para associações; cuidado com has_many no singular, pode dar problemas; cuidado com a mistura de português e inglês no código;
+Pode pensar em separar mais a lógica em novos models: propostas rejeitadas por exemplo;
