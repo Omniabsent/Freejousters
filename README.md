@@ -25,7 +25,7 @@ Brought to you with the use of:
 * Configure with:
   bin/setup
 
-* Populate the db with a few examples using
+* Populate the db with a few examples using:
   rails db:seeds
 
 * Activate server with:
