@@ -1,15 +1,13 @@
 class UserProfile < ApplicationRecord
   belongs_to :user
 
-  if :check_if_hireable == true then
-    validates :name, :social_name, :birth_date, :major, :bio, :experience, :picture, presence: true
-  else
-    validates :name, :social_name, :birth_date, :picture, presence: true
-  end
+  validates :name, :social_name, :birth_date, :picture, presence: true
+  validates :major, :bio, :experience, presence: true, if: :is_hireable?
 
   private
 
-  def check_if_hireable
-    @role == 'hireable'
+  def is_hireable?
+    user.role == 'hireable'
   end
+
 end

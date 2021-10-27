@@ -1,27 +1,27 @@
 require 'rails_helper'
 
 describe 'after the project is finished' do
-  it 'the hirer gives feedback to professional' do
+#  it 'the hirer gives feedback to professional' do
 
-  end
+#  end
 
-  it 'the professional can see the feedback' do
+#  it 'the professional can see the feedback' do
 
-  end
+#  end
 
-  it 'the profile of the professional shows their overall star rating' do
+#  it 'the profile of the professional shows their overall star rating' do
 
-  end
+#  end
 
-  it 'the professional gives feedback to the hirer' do
+#  it 'the professional gives feedback to the hirer' do
 
-  end
+#  end
 
-  it 'the hirer can see the feedback' do
+#  it 'the hirer can see the feedback' do
 
-  end
+#  end
 
-  it 'the profile of the hirer shows their overall star rating' do
+#  it 'the profile of the hirer shows their overall star rating' do
 
-  end
+#  end
 end

@@ -43,4 +43,22 @@ describe 'professional logs in' do
 
     expect(page).to have_content('Captain and helmsman of the Queen Anne\'s Revenge for over 15 years')
   end
+
+  it 'and the profile cannot contain empty fields' do
+    user = User.create!(email: 'mark@read.com', password: 'asdfasdf', role: 'hireable')
+
+    login_as user
+    visit root_path
+    click_on 'Criar perfil profissional'
+    fill_in 'Nome', with: 'Mary Read'
+    fill_in 'Nome social', with: 'Mark Read'
+    fill_in 'Nascimento', with: '01/01/1700'
+    fill_in 'Formação', with: 'Pirate'
+    fill_in 'Experiência', with: 'Dozens of ships looted and privateers killed'
+    fill_in 'Foto [link]', with: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Mary_Read.jpg/800px-Mary_Read.jpg'
+    click_on 'Enviar'
+
+    expect(page).not_to have_link('Modificar meu perfil')
+    expect(page).to have_content('Bio can\'t be blank')
+  end
 end
