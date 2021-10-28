@@ -19,8 +19,6 @@ Rails.application.routes.draw do
   get '/my_projects', to: 'projects#my_projects'
   get '/all_projects', to: 'projects#all_projects'
   get '/my_proposals', to: 'proposals#my_proposals'
-  get '/proposals/reject', to: 'proposals#reject'
-  get '/proposals/cancel', to: 'proposals#cancel'
   get 'search', to: "projects#search"
   resources :favourites, only: [:new, :create, :destroy]
 end

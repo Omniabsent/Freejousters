@@ -43,10 +43,10 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(params[:id])
     if @proposal.project.user == current_user then
       @proposal.accepted!
+      redirect_to request.referer
     else
       redirect_to root_path, notice: 'Você não tem autorização para aceitar essa proposta'
     end
-    redirect_to request.referer
   end
 
   def reject
