@@ -24,28 +24,34 @@ class ProposalsController < ApplicationController
 
   def cancel
     @proposal = Proposal.find(params[:id])
-    if @proposal.status == 'accepted' then
-      @project = @proposal.project
-      @proposal.cancelled!
-      render "proposals/cancel"
-    else
-      @proposal.cancelled!
-      redirect_to request.referer
+    if @proposal.user == current_user then
+      if @proposal.status == 'accepted' then
+        @project = @proposal.project
+        @proposal.cancelled!
+        render "proposals/cancel"
+      else
+        @proposal.cancelled!
+        redirect_to request.referer
+      end
     end
   end
 
 
   def accept
     @proposal = Proposal.find(params[:id])
-    @proposal.accepted!
+    if @proposal.project.user == current_user then
+      @proposal.accepted!
+    end
     redirect_to request.referer
   end
 
   def reject
     @proposal = Proposal.find(params[:id])
-    @project = @proposal.project
-    @proposal.rejected!
-    render "proposals/reject"
+    if @proposal.project.user == current_user then
+      @project = @proposal.project
+      @proposal.rejected!
+      render "proposals/reject"
+    end
   end
 
   #def edit
@@ -54,9 +60,11 @@ class ProposalsController < ApplicationController
 
   def update
     @proposal = Proposal.find(params[:id])
-    @proposal.update(params.require(:proposal).permit(:justification))
     @project = @proposal.project
-    redirect_to project_path(@project.id), notice: 'Justificativa enviada'
+    if @project.user == current_user || @proposal.user == current_user then
+      @proposal.update(params.require(:proposal).permit(:justification))
+      redirect_to project_path(@project.id), notice: 'Justificativa enviada'
+    end
   end
 
   def my_proposals
