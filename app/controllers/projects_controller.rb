@@ -15,15 +15,15 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def edit
-    @project = Project.find(params[:id])
-  end
+  #def edit
+  #  @project = Project.find(params[:id])
+  #end
 
-  def update
-    @project = Project.find(params[:id])
-    @project = Project.update(params.require(:project).permit(:title, :description, :wanted_skills, :max_pay, :expiration_date, :remote))
-    redirect_to user_profile_path
-  end
+  #def update
+  #  @project = Project.find(params[:id])
+  #  @project = Project.update(params.require(:project).permit(:title, :description, :wanted_skills, :max_pay, :expiration_date, :remote))
+  #  redirect_to user_profile_path
+  #end
 
   def show
     id = params[:id]

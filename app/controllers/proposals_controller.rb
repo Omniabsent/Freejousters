@@ -10,9 +10,11 @@ class ProposalsController < ApplicationController
     @proposal.status = 'pending'
     @proposal.user = current_user
     @proposal.project = Project.find(params[:project_id])
-    @proposal.save!
-
-    redirect_to request.referer, notice: 'Você se candidatou a esse projeto'
+    if @proposal.save then
+      redirect_to request.referer, notice: 'Você se candidatou a esse projeto'
+    else
+      redirect_to request.referer, notice: 'Todos os campos devem ser preenchidos'
+    end
   end
 
   def show
@@ -46,9 +48,9 @@ class ProposalsController < ApplicationController
     render "proposals/reject"
   end
 
-  def edit
-    @proposal = Proposal.find(params[:id])
-  end
+  #def edit
+  #  @proposal = Proposal.find(params[:id])
+  #end
 
   def update
     @proposal = Proposal.find(params[:id])

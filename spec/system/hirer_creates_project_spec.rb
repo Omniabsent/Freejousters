@@ -58,4 +58,20 @@ describe 'Hirer creates project' do
 
     expect(page).to have_link('Saquear o Urca de Lima')
   end
+
+  it 'an project cannot have empty fields' do
+    user = User.create!(email: 'captain@flint.com', password: 'asdfasdf', role: 'hirer')
+    user_profile = UserProfile.create!(name: 'James MacGraw', social_name: 'Flint', birth_date: '01/01/1700', picture: 'flint.jpg', user: user)
+
+    login_as user, scope: :user
+    visit root_path
+    click_on 'Criar novo projeto'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Title can\'t be blank')
+    expect(page).to have_content('Description can\'t be blank')
+    expect(page).to have_content('Wanted skills can\'t be blank')
+    expect(page).to have_content('Max pay can\'t be blank')
+    expect(page).to have_content('Expiration date can\'t be blank')
+  end
 end
