@@ -33,6 +33,8 @@ class ProposalsController < ApplicationController
         @proposal.cancelled!
         redirect_to request.referer
       end
+    else
+      redirect_to root_path, notice: 'Você não tem autorização para cancelar essa proposta'
     end
   end
 
@@ -41,6 +43,8 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(params[:id])
     if @proposal.project.user == current_user then
       @proposal.accepted!
+    else
+      redirect_to root_path, notice: 'Você não tem autorização para aceitar essa proposta'
     end
     redirect_to request.referer
   end
@@ -51,6 +55,8 @@ class ProposalsController < ApplicationController
       @project = @proposal.project
       @proposal.rejected!
       render "proposals/reject"
+    else
+      redirect_to root_path, notice: 'Você não tem autorização para rejeitar essa proposta'
     end
   end
 
@@ -64,6 +70,8 @@ class ProposalsController < ApplicationController
     if @project.user == current_user || @proposal.user == current_user then
       @proposal.update(params.require(:proposal).permit(:justification))
       redirect_to project_path(@project.id), notice: 'Justificativa enviada'
+    else
+      redirect_to root_path, notice: 'Você não tem autorização para realizar essa ação'
     end
   end
 

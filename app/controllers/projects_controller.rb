@@ -35,6 +35,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if @project.user == current_user then
       @project.encerrado!
+    else
+      redirect_to root_path, notice: 'Você não tem autorização para encerrar esse projeto'
     end
     redirect_to request.referer
   end
@@ -43,6 +45,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if @project.user == current_user then
       @project.fechado!
+    else
+      redirect_to root_path, notice: 'Você não tem autorização para fechar esse projeto'
     end
     redirect_to request.referer
   end
