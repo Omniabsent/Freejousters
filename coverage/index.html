@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-10-28T14:30:11-03:00">2021-10-28T14:30:11-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-10-28T14:51:30-03:00">2021-10-28T14:51:30-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>742</b> relevant lines,
-    <span class="green"><b>736</b> lines covered</span> and
+    <b>744</b> relevant lines,
+    <span class="green"><b>738</b> lines covered</span> and
     <span class="red"><b>6</b> lines missed. </span>
     (<span class="green">
   99.19%
@@ -95,11 +95,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#3407a0a1a083a721fb70023a297356ef679696b3" class="src_link" title="app/controllers/projects_controller.rb">app/controllers/projects_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">57</td>
-            <td class="cell--number">28</td>
-            <td class="cell--number">28</td>
+            <td class="cell--number">61</td>
+            <td class="cell--number">30</td>
+            <td class="cell--number">30</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">4.61</td>
+            <td class="cell--number">4.37</td>
             
           </tr>
         
@@ -768,8 +768,8 @@
     
 
     <div class="t-line-summary">
-      <b>28</b> relevant lines.
-      <span class="green"><b>28</b> lines covered</span> and
+      <b>30</b> relevant lines.
+      <span class="green"><b>30</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -1172,7 +1172,7 @@
 
             
 
-            <code class="ruby">    @project.encerrado!</code>
+            <code class="ruby">    if @project.user == current_user then</code>
           </li>
         </div>
       
@@ -1183,7 +1183,7 @@
 
             
 
-            <code class="ruby">    redirect_to request.referer</code>
+            <code class="ruby">      @project.encerrado!</code>
           </li>
         </div>
       
@@ -1194,56 +1194,12 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="39">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="40">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def fechado</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="41">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    @project = Project.find(params[:id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="42">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    @project.fechado!</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="43">
+          <li class="covered" data-hits="1" data-linenumber="39">
             <span class="hits">1</span>
             
 
@@ -1254,7 +1210,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="44">
+          <li class="never" data-hits="" data-linenumber="40">
             
             
 
@@ -1265,7 +1221,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="45">
+          <li class="never" data-hits="" data-linenumber="41">
             
             
 
@@ -1276,24 +1232,68 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="46">
+          <li class="covered" data-hits="1" data-linenumber="42">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def my_projects</code>
+            <code class="ruby">  def fechado</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="47">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="1" data-linenumber="43">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    @project = current_user.project</code>
+            <code class="ruby">    @project = Project.find(params[:id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    if @project.user == current_user then</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      @project.fechado!</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="47">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    redirect_to request.referer</code>
           </li>
         </div>
       
@@ -1326,18 +1326,18 @@
 
             
 
-            <code class="ruby">  def all_projects</code>
+            <code class="ruby">  def my_projects</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="51">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="10" data-linenumber="51">
+            <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">    @project = Project.all</code>
+            <code class="ruby">    @project = current_user.project</code>
           </li>
         </div>
       
@@ -1370,18 +1370,18 @@
 
             
 
-            <code class="ruby">  def search</code>
+            <code class="ruby">  def all_projects</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="55">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="8" data-linenumber="55">
+            <span class="hits">8</span>
             
 
             
 
-            <code class="ruby">    @project = Project.where(&#39;title like ? OR description like ?&#39;, &quot;%#{params[:q]}%&quot;, &quot;%#{params[:q]}%&quot;)</code>
+            <code class="ruby">    @project = Project.all</code>
           </li>
         </div>
       
@@ -1398,6 +1398,50 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="57">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="58">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def search</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="59">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    @project = Project.where(&#39;title like ? OR description like ?&#39;, &quot;%#{params[:q]}%&quot;, &quot;%#{params[:q]}%&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="61">
             
             
 

@@ -33,13 +33,17 @@ class ProjectsController < ApplicationController
 
   def encerrado
     @project = Project.find(params[:id])
-    @project.encerrado!
+    if @project.user == current_user then
+      @project.encerrado!
+    end
     redirect_to request.referer
   end
 
   def fechado
     @project = Project.find(params[:id])
-    @project.fechado!
+    if @project.user == current_user then
+      @project.fechado!
+    end
     redirect_to request.referer
   end
 
