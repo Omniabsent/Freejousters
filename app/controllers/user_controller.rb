@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   before_action :authenticate_user!
-  
+
   def hirer
     @user = current_user
     @user.role = 'hirer'
@@ -19,7 +19,7 @@ class UserController < ApplicationController
     end
   end
 
-  def show
-    @user = current_user
-  end
+  #def show
+  #  @user = current_user
+  #end
 end

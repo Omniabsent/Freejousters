@@ -1,9 +1,9 @@
 class ProposalsController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @proposal = Proposal.new
-  end
+  #def new
+  #  @proposal = Proposal.new
+  #end
 
   def create
     @proposal = Proposal.new(params.require(:proposal).permit(:presentation, :charges, :week_hours, :total_hours, :project_id, :approval))
@@ -17,10 +17,10 @@ class ProposalsController < ApplicationController
     end
   end
 
-  def show
-    id = params[:id]
-    @proposal = Proposal.find(id)
-  end
+  #def show
+  #  id = params[:id]
+  #  @proposal = Proposal.find(id)
+  #end
 
   def cancel
     @proposal = Proposal.find(params[:id])

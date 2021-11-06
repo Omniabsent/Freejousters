@@ -54,7 +54,7 @@
   Projetos anteriores: <br>
   <% u.user.proposal.each do |up| %>
     <% if up.project.status == 'encerrado' then %>
-      <li><%= link_to up.project.title, project_path(up.id) %></li>
+      <li><%= link_to up.project.title, project_path(up.project.id) %></li>
     <%end%>
   <%end%>
 <%end%>
