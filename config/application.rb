@@ -4,6 +4,7 @@ require_relative "boot"
 require "rails"
 
 %w(
+  action_mailer/railtie
   action_controller/railtie
   action_view/railtie
   action_cable/engine
